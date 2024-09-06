@@ -11,9 +11,11 @@
         android:id="@+id/logo"
         android:layout_width="0dp"
         android:layout_height="102dp"
+
+        android:layout_marginTop="12dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/colorBlock"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,24 +23,27 @@
         android:id="@+id/colorBlock"
         android:layout_width="290dp"
         android:layout_height="432dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/rounded_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
+
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="284dp"
+        android:layout_height="419dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/colorBlock"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logo"
-        app:layout_constraintVertical_bias="0.793">
+        app:layout_constraintTop_toTopOf="@+id/colorBlock"
+        app:layout_constraintVertical_bias="0.232">
 
         <TextView
             android:id="@+id/textView"
@@ -88,6 +93,7 @@
             android:textStyle="bold" />
 
 
+        <!-- Texto iniciar sesion-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,5 +111,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

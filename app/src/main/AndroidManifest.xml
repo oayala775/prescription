@@ -30,6 +30,9 @@
         <!-- Queremos que carge Login-->
         <activity android:name=".LoginActivity" />
 
+        <!-- Queremos que carge usuario sign up-->
+        <activity android:name=".SignUpUsuarioActivity" />
+
 
     </application>
 
