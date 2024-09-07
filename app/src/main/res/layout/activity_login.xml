@@ -73,7 +73,7 @@
                 />
 
             <Button
-                android:id="@+id/buttonPharm"
+                android:id="@+id/buttonLogIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -100,7 +100,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonRegister"
                 style="@style/link_button"
                 android:text="Regístrate" />
 

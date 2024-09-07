@@ -2,7 +2,6 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -27,33 +26,21 @@ public class SignUpActivity extends AppCompatActivity {
         signUpPharm = findViewById(R.id.buttonPharm);
         signIn = findViewById(R.id.buttonSignIn);
 
-        signUpUser.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(SignUpActivity.this, SignUpUsuarioActivity.class);
-                startActivity(intent);
-            }
+        signUpUser.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, SignUpUsuarioActivity.class);
+            startActivity(intent);
         });
-        signUpDoc.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(SignUpActivity.this, SignUpUsuarioActivity.class);
-                startActivity(intent);
-            }
+        signUpDoc.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, SignUpUsuarioActivity.class);
+            startActivity(intent);
         });
-        signUpPharm.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(SignUpActivity.this, SignUpUsuarioActivity.class);
-                startActivity(intent);
-            }
+        signUpPharm.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, SignUpUsuarioActivity.class);
+            startActivity(intent);
         });
-        signIn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
+        signIn.setOnClickListener(v -> {
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 
