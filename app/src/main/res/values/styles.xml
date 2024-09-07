@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="link_button">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">28sp</item>
+        <item name="android:textColor">#d9d9d9</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingVertical">0sp</item>
+    </style>
+
+    <style name="card">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/rounded_background</item>
+    </style>
+</resources>
