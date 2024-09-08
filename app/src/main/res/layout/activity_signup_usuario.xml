@@ -32,6 +32,7 @@
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/flecha_izq" />
 
+
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="300dp"
