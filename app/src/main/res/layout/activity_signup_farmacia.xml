@@ -107,7 +107,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="Usuario"
+                            android:text="Farmacia"
                             android:textColor="#FFFFFF"
                             android:textSize="20dp" />
 
@@ -123,17 +123,6 @@
                             android:paddingStart="15dp"  />
 
                         <EditText
-                            android:id="@+id/user_apellidos"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginVertical="25dp"
-                            android:background="@drawable/rounded_edittext_background"
-                            android:ems="10"
-                            android:hint="Apellido(s)"
-                            android:inputType="text"
-                            android:paddingStart="15dp"  />
-
-                        <EditText
                             android:id="@+id/user_telefono"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
@@ -143,86 +132,6 @@
                             android:hint="Número de teléfono"
                             android:inputType="text"
                             android:paddingStart="15dp"  />
-
-                        <EditText
-                            android:id="@+id/user_nss"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginVertical="25dp"
-                            android:background="@drawable/rounded_edittext_background"
-                            android:ems="10"
-                            android:hint="NSS"
-                            android:inputType="text"
-                            android:paddingStart="15dp"  />
-
-                        <EditText
-                            android:id="@+id/user_curp"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginVertical="25dp"
-                            android:background="@drawable/rounded_edittext_background"
-                            android:ems="10"
-                            android:hint="CURP"
-                            android:inputType="text"
-                            android:paddingStart="15dp"  />
-
-                        <TextView
-                            android:id="@+id/text_fechaNacimiento"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:gravity="center"
-                            android:text="Fecha de nacimiento"
-                            android:textColor="#d9d9d9"
-                            android:textSize="20dp" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:textAlignment="center">
-
-                            <EditText
-                                android:id="@+id/user_day"
-                                android:layout_width="60dp"
-                                android:layout_height="48dp"
-                                android:layout_marginVertical="25dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/rounded_edittext_background"
-                                android:ems="10"
-                                android:hint="Dia"
-                                android:inputType="text"
-                                android:textAlignment="center" />
-
-                            <EditText
-                                android:id="@+id/user_month"
-                                android:layout_width="60dp"
-                                android:layout_height="48dp"
-                                android:layout_marginVertical="25dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/rounded_edittext_background"
-                                android:ems="10"
-                                android:hint="Mes"
-                                android:inputType="text"
-                                android:textAlignment="center" />
-
-                            <EditText
-                                android:id="@+id/user_year"
-                                android:layout_width="60dp"
-                                android:layout_height="48dp"
-                                android:layout_marginVertical="25dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/rounded_edittext_background"
-                                android:ems="10"
-                                android:hint="Año"
-                                android:inputType="text"
-                                android:textAlignment="center" />
-
-                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/text_domicilio"

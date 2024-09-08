@@ -37,6 +37,9 @@
         <!-- Queremos que carge sign up doctor-->
         <activity android:name=".SignUpDoctorActivity" />
 
+        <!-- Queremos que carge sign up farmacia-->
+        <activity android:name=".SignUpFarmaciaActivity" />
+
 
     </application>
 
