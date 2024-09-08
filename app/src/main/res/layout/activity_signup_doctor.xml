@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="13dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp">
+
+
+        <!-- Es header-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/flecha_izq"
+                android:layout_width="36dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/flecha_izq" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                app:srcCompat="@drawable/logo" />
+
+
+        </LinearLayout>
+
+
+
+
+        <!-- Es formulario-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp">
+
+<!--            <View
+                android:id="@+id/colorBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />-->
+
+            <LinearLayout
+                android:id="@+id/colorBlock"
+                style="@style/card"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="25dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/colorBlock"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/colorBlock"
+                        app:layout_constraintVertical_bias="0.495">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Sign up"
+                            android:textColor="#FFFFFF"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Doctor"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/user_nombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Nombre"
+                            android:inputType="text"
+                            android:paddingStart="15dp"  />
+
+                        <EditText
+                            android:id="@+id/user_apellidos"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Apellido(s)"
+                            android:inputType="text"
+                            android:paddingStart="15dp"  />
+
+                        <EditText
+                            android:id="@+id/user_telefono"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Número de teléfono"
+                            android:inputType="text"
+                            android:paddingStart="15dp"  />
+
+                        <EditText
+                            android:id="@+id/user_nss"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="NSS"
+                            android:inputType="text"
+                            android:paddingStart="15dp"  />
+
+                        <EditText
+                            android:id="@+id/user_curp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="CURP"
+                            android:inputType="text"
+                            android:paddingStart="15dp"  />
+
+                        <EditText
+                            android:id="@+id/user_cedula"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Cédula rpofesional"
+                            android:inputType="text"
+                            android:paddingStart="15dp"  />
+
+                        <TextView
+                            android:id="@+id/text_fechaNacimiento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Fecha de nacimiento"
+                            android:textColor="#d9d9d9"
+                            android:textSize="20dp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:textAlignment="center">
+
+                            <EditText
+                                android:id="@+id/user_day"
+                                android:layout_width="60dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="25dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_edittext_background"
+                                android:ems="10"
+                                android:hint="Dia"
+                                android:inputType="text"
+                                android:textAlignment="center" />
+
+                            <EditText
+                                android:id="@+id/user_month"
+                                android:layout_width="60dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="25dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_edittext_background"
+                                android:ems="10"
+                                android:hint="Mes"
+                                android:inputType="text"
+                                android:textAlignment="center" />
+
+                            <EditText
+                                android:id="@+id/user_year"
+                                android:layout_width="60dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="25dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_edittext_background"
+                                android:ems="10"
+                                android:hint="Año"
+                                android:inputType="text"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/text_domicilio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Domicilio"
+                            android:textColor="#d9d9d9"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/user_calle1"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Calle 1"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/user_calle2"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Calle 2"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/user_colonia"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Colonia"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/user_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Contraseña"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/user_confirm_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="25dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Confirmar contraseña"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+
+                        <TextView
+                            android:id="@+id/foto_perfil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Subir foto de perfil"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/siguiente"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="end"
+                                android:text="Siguiente >"
+                                android:textColor="#000000"
+                                android:textSize="20dp" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </ScrollView>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

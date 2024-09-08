@@ -31,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
             startActivity(intent);
         });
         signUpDoc.setOnClickListener(v -> {
-            Intent intent = new Intent(SignUpActivity.this, SignUpUsuarioActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, SignUpDoctorActivity.class);
             startActivity(intent);
         });
         signUpPharm.setOnClickListener(v -> {
