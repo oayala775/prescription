@@ -32,7 +32,6 @@
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/flecha_izq" />
 
-
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
@@ -41,27 +40,12 @@
                 android:layout_marginStart="15dp"
                 app:srcCompat="@drawable/logo" />
         </LinearLayout>
-
-
-
-
         <!-- Es formulario-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            >
-
-<!--            <View
-                android:id="@+id/colorBlock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_background"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />-->
+            android:layout_marginStart="17dp">
 
             <LinearLayout
                 android:id="@+id/colorBlock"
@@ -89,7 +73,8 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/colorBlock"
-                        app:layout_constraintVertical_bias="0.495">
+                        app:layout_constraintVertical_bias="0.495"
+                        android:layout_marginVertical="10dp">
 
                         <TextView
                             android:id="@+id/textView"
@@ -107,7 +92,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="Usuario"
+                            android:text="Doctor"
                             android:textColor="#FFFFFF"
                             android:textSize="20dp" />
 
@@ -115,13 +100,12 @@
                             android:id="@+id/user_nombre"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:layout_gravity="center_vertical"
                             android:layout_marginVertical="10dp"
                             android:background="@drawable/rounded_edittext_background"
                             android:ems="10"
                             android:hint="Nombre"
                             android:inputType="text"
-                            android:paddingStart="15dp" />
+                            android:paddingStart="15dp"  />
 
                         <EditText
                             android:id="@+id/user_apellidos"
@@ -132,7 +116,7 @@
                             android:ems="10"
                             android:hint="Apellido(s)"
                             android:inputType="text"
-                            android:paddingStart="15dp" />
+                            android:paddingStart="15dp"  />
 
                         <EditText
                             android:id="@+id/user_telefono"
@@ -166,6 +150,17 @@
                             android:hint="CURP"
                             android:inputType="text"
                             android:paddingStart="15dp"  />
+
+                        <EditText
+                            android:id="@+id/user_cedula"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Cédula profesional"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
 
                         <TextView
                             android:id="@+id/text_fechaNacimiento"
