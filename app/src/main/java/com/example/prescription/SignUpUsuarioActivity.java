@@ -17,10 +17,10 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup_usuario);
 
-        btnBack = (ImageView) findViewById(R.id.flecha_izq);
-        btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(SignUpUsuarioActivity.this, SignUpActivity.class);
-            startActivity(intent);
-        });
+//        btnBack = (ImageView) findViewById(R.id.flecha_izq);
+//        btnBack.setOnClickListener(v -> {
+//            Intent intent = new Intent(SignUpUsuarioActivity.this, SignUpActivity.class);
+//            startActivity(intent);
+//        });
     }
 }

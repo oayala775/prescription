@@ -20,16 +20,15 @@
     <LinearLayout
         android:id="@+id/colorBlock"
         style="@style/card"
+        android:layout_width="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/logo">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="419dp"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="25dp"
@@ -45,11 +44,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginVertical="20dp"
                 android:gravity="center"
                 android:text="Sign up"
                 android:textColor="#FFFFFF"
-                android:textSize="40sp"
-                android:layout_marginVertical="20dp"/>
+                android:textSize="40sp" />
 
             <Button
                 android:id="@+id/buttonUser"
@@ -94,8 +93,8 @@
             <Button
                 android:id="@+id/buttonSignIn"
                 style="@style/link_button"
-                android:text="Iniciar Sesión"
-                android:layout_marginVertical="20dp"/>
+                android:layout_marginVertical="20dp"
+                android:text="Iniciar Sesión" />
 
         </LinearLayout>
 
