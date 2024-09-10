@@ -48,13 +48,14 @@
                 android:gravity="center"
                 android:text="Sign up"
                 android:textColor="#FFFFFF"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:layout_marginVertical="20dp"/>
 
             <Button
                 android:id="@+id/buttonUser"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
+                android:layout_marginVertical="10dp"
                 android:backgroundTint="#0D637D"
                 android:defaultFocusHighlightEnabled="false"
                 android:text="Usuario"
@@ -65,9 +66,9 @@
 
             <Button
                 android:id="@+id/buttonDoctor"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
+                android:layout_marginVertical="10dp"
                 android:backgroundTint="#0D637D"
                 android:defaultFocusHighlightEnabled="false"
                 android:text="Doctor"
@@ -78,9 +79,9 @@
 
             <Button
                 android:id="@+id/buttonPharm"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
+                android:layout_marginVertical="10dp"
                 android:backgroundTint="#0D637D"
                 android:defaultFocusHighlightEnabled="false"
                 android:text="Farmacia"
@@ -93,7 +94,8 @@
             <Button
                 android:id="@+id/buttonSignIn"
                 style="@style/link_button"
-                android:text="Iniciar Sesión" />
+                android:text="Iniciar Sesión"
+                android:layout_marginVertical="20dp"/>
 
         </LinearLayout>
 
