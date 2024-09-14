@@ -40,6 +40,9 @@
         <!-- Queremos que carge sign up farmacia-->
         <activity android:name=".SignUpFarmaciaActivity" />
 
+        <!-- Queremos que carge home usuario-->
+        <activity android:name=".HomeUserActivity" />
+
 
     </application>
 
