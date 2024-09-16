@@ -1,6 +1,8 @@
 package com.example.prescription;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,8 +48,18 @@ public class HomeUserActivity extends AppCompatActivity {
         myAdapter = new ItemRecetaAdapter(new ArrayList<>(inventarioRecetas));
         recyclerView.setAdapter(myAdapter);
 
+        ImageView PerfilButton;
+        PerfilButton = findViewById(R.id.imageView3);
+
+        PerfilButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
+            startActivity(intent);
+        });
+
 
     }
+
+
 
 
 }
