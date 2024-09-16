@@ -11,6 +11,8 @@ public class Receta {
     private String weight = "";
     private String description;
     private String date;
+    private boolean status; // True -> Active, False -> Expired
+
 
 
 
