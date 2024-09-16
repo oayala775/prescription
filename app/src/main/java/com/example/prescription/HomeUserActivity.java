@@ -40,6 +40,22 @@ public class HomeUserActivity extends AppCompatActivity {
         this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
         this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
         this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
 
 
 
