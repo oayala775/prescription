@@ -2,6 +2,7 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -63,6 +64,14 @@ public class HomeUserActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new ItemRecetaAdapter(new ArrayList<>(inventarioRecetas));
         recyclerView.setAdapter(myAdapter);
+
+        ImageView PerfilButton;
+        PerfilButton = findViewById(R.id.imageView3);
+
+        PerfilButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
+            startActivity(intent);
+        });
 
 
     }

@@ -24,7 +24,6 @@
             </intent-filter>
         </activity>
 
-
         <!-- Queremos que carge Login-->
         <activity android:name=".LoginActivity" />
 
@@ -42,6 +41,9 @@
 
         <!-- Queremos que carge home usuario-->
         <activity android:name=".HomeUserActivity" />
+
+        <!-- Queremos que carge perfil usuario-->
+        <activity android:name=".PerfilUserActivity" />
 
 
     </application>

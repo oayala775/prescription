@@ -7,8 +7,6 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-//Hi
-
 public class SignUpDoctorActivity extends AppCompatActivity {
 
     @Override

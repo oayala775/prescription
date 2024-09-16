@@ -11,7 +11,6 @@
     android:paddingBottom="30dp"
     >
 
-
     <!-- Es header-->
     <LinearLayout
         android:id="@+id/headerLinearLayout"
@@ -19,8 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
         android:gravity="center"
-        android:orientation="horizontal"
-
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -28,52 +26,84 @@
         <ImageView
             android:id="@+id/logo"
             android:layout_width="170dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             app:srcCompat="@drawable/logo" />
-    </LinearLayout>
 
-
-
-    <!-- Nuevo Layout entre el header y el contentArea -->
-    <LinearLayout
-        android:id="@+id/middleLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout"
-        app:layout_constraintBottom_toTopOf="@+id/contentArea">
-
-        <!-- Agrega contenido aquí -->
         <TextView
+            android:id="@+id/perfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Recetas"
+            android:text="Perfil"
             android:textColor="#649dae"
             android:textSize="55sp" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
-
     </LinearLayout>
 
+    <!-- Middle-->
+
+    <LinearLayout
+        android:id="@+id/middleLayout"
+        style="@style/card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/contentArea"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:paddingVertical="15dp"
+            android:scrollbarStyle="insideOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="25dp"
+                app:layout_constraintBottom_toBottomOf="@+id/colorBlock"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/colorBlock"
+                app:layout_constraintVertical_bias="0.495">
 
 
+
+                <EditText
+                    android:id="@+id/user_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:ems="10"
+                    android:hint="Nombre"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
 
     <!-- Content Area -->
     <LinearLayout
         android:id="@+id/contentArea"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="bottom"
+
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +130,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:contentDescription="Menu"
                     app:srcCompat="@drawable/hamburguesanegra" />
 
                 <ImageView
@@ -108,8 +137,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:contentDescription="Home"
-                    android:onClick="goHome"
                     app:srcCompat="@drawable/home" />
 
                 <ImageView
@@ -117,7 +144,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:contentDescription="Perfil"
                     app:srcCompat="@drawable/usuario" />
 
             </LinearLayout>
@@ -126,6 +152,27 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout"
+        android:gravity="center">
 
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            app:srcCompat="@drawable/portal"
+            app:strokeColor="@color/white"
+            app:strokeWidth="4dp" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,10 +55,10 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                android:backgroundTint="#0D637D"
+                android:backgroundTint="#FFFFFF"
                 android:defaultFocusHighlightEnabled="false"
                 android:text="Usuario"
-                android:textColor="#FFFFFF"
+                android:textColor="#649dae"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -68,10 +68,10 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                android:backgroundTint="#0D637D"
+                android:backgroundTint="#FFFFFF"
                 android:defaultFocusHighlightEnabled="false"
                 android:text="Doctor"
-                android:textColor="#FFFFFF"
+                android:textColor="#649dae"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -81,10 +81,10 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                android:backgroundTint="#0D637D"
+                android:backgroundTint="#FFFFFF"
                 android:defaultFocusHighlightEnabled="false"
                 android:text="Farmacia"
-                android:textColor="#FFFFFF"
+                android:textColor="#649dae"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
