@@ -1,6 +1,8 @@
 package com.example.prescription;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +49,12 @@ public class HomeUserActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
 
+    }
+
+
+    public void goHome(View v){
+        Intent intent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
+        startActivity(intent);
     }
 
 
