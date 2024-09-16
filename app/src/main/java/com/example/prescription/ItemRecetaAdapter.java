@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,9 +42,9 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position){
-        Log.d("ItemRecetaAdapter", "Position: " + position + " - " + data.get(position).getFecha() + " " + data.get(position).getDescription());
+        Log.d("ItemRecetaAdapter", "Position: " + position + " - " + data.get(position).getDate() + " " + data.get(position).getDescription());
 
-        holder.description.setText(data.get(position).getFecha() + " " + data.get(position).getDescription());
+        holder.description.setText(data.get(position).getDate() + " " + data.get(position).getDescription());
 
     }
 
