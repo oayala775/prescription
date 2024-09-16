@@ -102,21 +102,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/hamburguesanegra" />
+                    app:srcCompat="@drawable/hamburguesanegra"
+                    android:contentDescription="Menu"/>
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/home" />
+                    android:onClick="goHome"
+                    app:srcCompat="@drawable/home"
+                    android:contentDescription="Home" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/usuario" />
+                    app:srcCompat="@drawable/usuario"
+                    android:contentDescription="Perfil"/>
 
             </LinearLayout>
 
