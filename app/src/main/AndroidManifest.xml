@@ -24,7 +24,6 @@
             </intent-filter>
         </activity>
 
-
         <!-- Queremos que carge Login-->
         <activity android:name=".LoginActivity" />
 
