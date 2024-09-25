@@ -54,21 +54,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout">
 
+        <TextView
+            android:id="@+id/espacio"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:fillViewport="true"
-            android:paddingVertical="15dp"
-            android:scrollbarStyle="insideOverlay">
+            android:scrollbarStyle="insideOverlay" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
                 app:layout_constraintBottom_toBottomOf="@+id/colorBlock"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -76,19 +85,224 @@
                 app:layout_constraintTop_toTopOf="@+id/colorBlock"
                 app:layout_constraintVertical_bias="0.495">
 
+                <TextView
+                    android:id="@+id/user_codigo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Codigo"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
+                <TextView
+                    android:id="@+id/user_nombre_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="-8dp"
+                    android:text="Nombre"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/user_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
+                    android:background="@drawable/rounded_edittext_background2"
                     android:ems="10"
                     android:hint="Nombre"
                     android:inputType="text"
                     android:paddingStart="15dp"
                     tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_apellido_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp"
+                    android:text="Apellido"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    tools:ignore="DuplicateIds" />
+
+                <EditText
+                    android:id="@+id/user_apellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="Apellido"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_telefono_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Teléfono"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp" />
+
+                <EditText
+                    android:id="@+id/user_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="Teléfono"
+                    android:inputType="phone"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_nss_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NSS"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp" />
+
+                <EditText
+                    android:id="@+id/user_nss"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="nss"
+                    android:inputType="number"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_curp_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CURP"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp" />
+
+                <EditText
+                    android:id="@+id/user_curp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="CURP"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_nacimiento_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp"
+                    android:text="Fecha Nacimiento"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/user_nacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="dd/mm/yyyy"
+                    android:inputType="date"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_calle1_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp"
+                    android:text="Calle 1"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/user_calle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="Calle 1"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_calle2_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp"
+                    android:text="Calle 2"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/user_calle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="Calle 2"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/user_colonia_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp"
+                    android:text="Colonia"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/user_colonia"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="Colonia"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
+
 
             </LinearLayout>
 
