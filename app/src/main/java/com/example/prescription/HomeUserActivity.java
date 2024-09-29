@@ -3,6 +3,7 @@ package com.example.prescription;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +41,22 @@ public class HomeUserActivity extends AppCompatActivity {
         this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
         this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
         this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
+        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
 
 
 
@@ -60,6 +77,10 @@ public class HomeUserActivity extends AppCompatActivity {
     }
 
 
+    public void goHome(View v){
+        Intent intent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
+        startActivity(intent);
+    }
 
 
 }
