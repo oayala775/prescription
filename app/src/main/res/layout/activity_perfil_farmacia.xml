@@ -86,7 +86,7 @@
                 app:layout_constraintVertical_bias="0.495">
 
                 <TextView
-                    android:id="@+id/user_codigo"
+                    android:id="@+id/farmacia_codigo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Codigo"
@@ -95,7 +95,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/user_nombre_texto"
+                    android:id="@+id/farmacia_nombre_texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -107,7 +107,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/user_nombre"
+                    android:id="@+id/farmacia_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginVertical="10dp"
@@ -119,123 +119,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/user_apellido_texto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="-8dp"
-                    android:text="Apellido"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    tools:ignore="DuplicateIds" />
-
-                <EditText
-                    android:id="@+id/user_apellido"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background2"
-                    android:ems="10"
-                    android:hint="Apellido"
-                    android:inputType="text"
-                    android:paddingStart="15dp"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:id="@+id/user_telefono_texto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Teléfono"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="-8dp" />
-
-                <EditText
-                    android:id="@+id/user_telefono"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background2"
-                    android:ems="10"
-                    android:hint="Teléfono"
-                    android:inputType="phone"
-                    android:paddingStart="15dp"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:id="@+id/user_nss_texto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="NSS"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="-8dp" />
-
-                <EditText
-                    android:id="@+id/user_nss"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background2"
-                    android:ems="10"
-                    android:hint="nss"
-                    android:inputType="number"
-                    android:paddingStart="15dp"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:id="@+id/user_curp_texto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CURP"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="-8dp" />
-
-                <EditText
-                    android:id="@+id/user_curp"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background2"
-                    android:ems="10"
-                    android:hint="CURP"
-                    android:inputType="text"
-                    android:paddingStart="15dp"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:id="@+id/user_nacimiento_texto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="-8dp"
-                    android:text="Fecha Nacimiento"
-                    android:textAlignment="viewStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/user_nacimiento"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background2"
-                    android:ems="10"
-                    android:hint="dd/mm/yyyy"
-                    android:inputType="date"
-                    android:paddingStart="15dp"
-                    tools:ignore="RtlSymmetry" />
-
-                <TextView
-                    android:id="@+id/user_domicilio_texto"
+                    android:id="@+id/farmacia_domicilio_texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -243,10 +127,11 @@
                     android:text="Domicilio"
                     android:textAlignment="viewStart"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="DuplicateIds" />
 
                 <EditText
-                    android:id="@+id/user_domicilio"
+                    android:id="@+id/farmacia_domicilio"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginVertical="10dp"
@@ -258,7 +143,7 @@
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/user_colonia_texto"
+                    android:id="@+id/farmacia_colonia_texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -266,22 +151,23 @@
                     android:text="Colonia"
                     android:textAlignment="viewStart"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="DuplicateIds" />
 
                 <EditText
-                    android:id="@+id/user_colonia"
+                    android:id="@+id/farmacia_colonia"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/rounded_edittext_background2"
                     android:ems="10"
-                    android:hint="Colonia"
+                    android:hint="Calle y número"
                     android:inputType="text"
                     android:paddingStart="15dp"
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
-                    android:id="@+id/user_ciudad_texto"
+                    android:id="@+id/farmacia_ciudad_texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -289,20 +175,43 @@
                     android:text="Ciudad"
                     android:textAlignment="viewStart"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="DuplicateIds" />
 
                 <EditText
-                    android:id="@+id/user_ciudad"
+                    android:id="@+id/farmacia_ciudad"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/rounded_edittext_background2"
                     android:ems="10"
-                    android:hint="Ciudad"
+                    android:hint="Calle y número"
                     android:inputType="text"
                     android:paddingStart="15dp"
                     tools:ignore="RtlSymmetry" />
 
+                <TextView
+                    android:id="@+id/farmacia_telefono_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Teléfono"
+                    android:textAlignment="viewStart"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="-8dp" />
+
+                <EditText
+                    android:id="@+id/farmacia_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/rounded_edittext_background2"
+                    android:ems="10"
+                    android:hint="Teléfono"
+                    android:inputType="phone"
+                    android:paddingStart="15dp"
+                    tools:ignore="RtlSymmetry" />
 
             </LinearLayout>
 

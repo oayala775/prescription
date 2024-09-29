@@ -11,15 +11,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-public class PerfilUserActivity extends AppCompatActivity {
+public class PerfilDoctorActivity extends AppCompatActivity {
     public EditText nombre, apellido, telefono, nss, curp, fecha_nacimiento, domicilio, ciudad, colonia;
-    public TextView codigo;
+    public TextView codigo, cedula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_perfil_usuario);
+        setContentView(R.layout.activity_perfil_doctor);
 
         String nombre_parametro = "Juan";
         String apellido_parametro = "Pérez";
@@ -31,17 +31,19 @@ public class PerfilUserActivity extends AppCompatActivity {
         String colonia_parametro = "Colonia 1";
         String ciudad_parametro = "Ciudad";
         long codigo_parametro = 21212121212L;
+        long cedula_parametro = 88888888L;
 
-        codigo = findViewById(R.id.user_codigo);
-        nombre = findViewById(R.id.user_nombre);
-        apellido = findViewById(R.id.user_apellido);
-        telefono = findViewById(R.id.user_telefono);
-        nss = findViewById(R.id.user_nss);
-        curp = findViewById(R.id.user_curp);
-        fecha_nacimiento = findViewById(R.id.user_nacimiento);
-        domicilio = findViewById(R.id.user_domicilio);
-        colonia = findViewById(R.id.user_colonia);
-        ciudad = findViewById(R.id.user_ciudad);
+        codigo = findViewById(R.id.doctor_codigo);
+        nombre = findViewById(R.id.doctor_nombre);
+        apellido = findViewById(R.id.doctor_apellido);
+        telefono = findViewById(R.id.doctor_telefono);
+        nss = findViewById(R.id.doctor_nss);
+        curp = findViewById(R.id.doctor_curp);
+        fecha_nacimiento = findViewById(R.id.doctor_nacimiento);
+        domicilio = findViewById(R.id.doctor_domicilio);
+        colonia = findViewById(R.id.doctor_colonia);
+        ciudad = findViewById(R.id.doctor_ciudad);
+        cedula = findViewById(R.id.doctor_cedula);
 
         codigo.setText(String.valueOf(codigo_parametro));
         nombre.setText(nombre_parametro);
@@ -54,6 +56,7 @@ public class PerfilUserActivity extends AppCompatActivity {
         domicilio.setText(domicilio_parametro);
         colonia.setText(colonia_parametro);
         ciudad.setText(ciudad_parametro);
+        cedula.setText(String.valueOf(cedula_parametro));
 
     }
 }

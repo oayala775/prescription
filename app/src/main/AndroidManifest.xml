@@ -45,6 +45,12 @@
         <!-- Queremos que carge perfil usuario-->
         <activity android:name=".PerfilUserActivity" />
 
+        <!-- Queremos que carge perfil doctor-->
+        <activity android:name=".PerfilDoctorActivity" />
+
+        <!-- Queremos que carge perfil farmacia-->
+        <activity android:name=".PerfilFarmaciaActivity" />
+
 
     </application>
 

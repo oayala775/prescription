@@ -69,7 +69,7 @@ public class HomeUserActivity extends AppCompatActivity {
         PerfilButton = findViewById(R.id.imageView3);
 
         PerfilButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
+            Intent intent = new Intent(HomeUserActivity.this, PerfilFarmaciaActivity.class);
             startActivity(intent);
         });
 
