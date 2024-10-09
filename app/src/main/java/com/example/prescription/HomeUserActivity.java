@@ -24,6 +24,7 @@ public class HomeUserActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ImageView PerfilButton;
 
 
     private List<Receta> inventarioRecetas = new ArrayList<>();
@@ -65,22 +66,17 @@ public class HomeUserActivity extends AppCompatActivity {
         myAdapter = new ItemRecetaAdapter(new ArrayList<>(inventarioRecetas));
         recyclerView.setAdapter(myAdapter);
 
-        ImageView PerfilButton;
-        PerfilButton = findViewById(R.id.imageView3);
 
+
+
+        // Buttons
+        PerfilButton = findViewById(R.id.perfilButton);
         PerfilButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeUserActivity.this, PerfilFarmaciaActivity.class);
+            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
             startActivity(intent);
         });
 
 
     }
-
-
-    public void goHome(View v){
-        Intent intent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
-        startActivity(intent);
-    }
-
 
 }
