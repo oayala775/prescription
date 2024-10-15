@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingStart="30dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="30dp"
+    android:paddingBottom="30dp"
+    >
+
+
+    <!-- Es header-->
+    <LinearLayout
+        android:id="@+id/headerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/logo" />
+    </LinearLayout>
+
+
+
+    <!-- Nuevo Layout entre el header y el contentArea -->
+    <LinearLayout
+        android:id="@+id/middleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/contentArea">
+
+        <!-- Agrega contenido aquí -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Recetas"
+            android:textColor="#649dae"
+            android:textSize="55sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/colorBlock"
+                style="@style/cardBlank"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    android:paddingVertical="15dp"
+                    android:scrollbarStyle="insideOverlay"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/colorBlock"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/colorBlock"
+                        app:layout_constraintVertical_bias="0.495">
+
+
+                        <EditText
+                            android:id="@+id/user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/item_lista"
+                            android:ems="10"
+                            android:hint="Nombre Completo"
+                            android:inputType="text"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                        <EditText
+                            android:id="@+id/user_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/item_lista"
+                            android:ems="10"
+                            android:hint="ID Paciente: "
+                            android:inputType="text"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:textAlignment="center">
+
+                            <EditText
+                                android:id="@+id/user_day_recipe"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:background="@drawable/item_lista"                                android:ems="10"
+                                android:hint="Dia"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"/>
+
+                            <EditText
+                                android:id="@+id/user_month_recipe"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:background="@drawable/item_lista"                                android:ems="10"
+                                android:hint="Mes"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"/>
+
+                            <EditText
+                                android:id="@+id/user_year_recipe"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:background="@drawable/item_lista"                                android:ems="10"
+                                android:hint="Año"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"/>
+
+                        </LinearLayout>
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:textAlignment="center">
+
+                            <EditText
+                                android:id="@+id/user_age"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:background="@drawable/item_lista"                                android:ems="10"
+                                android:hint="Edad"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"/>
+
+                            <EditText
+                                android:id="@+id/user_height"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:background="@drawable/item_lista"                                android:ems="10"
+                                android:hint="Estatura"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"/>
+
+                            <EditText
+                                android:id="@+id/user_weight"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:background="@drawable/item_lista"                                android:ems="10"
+                                android:hint="Peso"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"/>
+
+                        </LinearLayout>
+
+
+                        <EditText
+                            android:id="@+id/user_diagnostic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="start"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/item_lista"
+                            android:ems="10"
+                            android:hint="Diagnostico"
+                            android:inputType="textMultiLine"
+                            android:minHeight="100dp"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:maxLines="5"
+                            />
+
+
+                        <EditText
+                            android:id="@+id/user_treatment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/item_lista"
+                            android:ems="10"
+                            android:hint="Tratamiento"
+                            android:gravity="start"
+                            android:inputType="textMultiLine"
+                            android:minHeight="150dp"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:maxLines="10"
+                        />
+
+
+
+                    </LinearLayout>
+
+
+                </ScrollView>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+
+
+    <!-- Content Area -->
+    <LinearLayout
+        android:id="@+id/contentArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middleLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                style="@style/card"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:contentDescription="Menu"
+                    app:srcCompat="@drawable/hamburguesanegra" />
+
+                <ImageView
+                    android:id="@+id/homeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:contentDescription="Home"
+                    app:srcCompat="@drawable/home" />
+
+                <ImageView
+                    android:id="@+id/perfilButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:contentDescription="Perfil"
+                    app:srcCompat="@drawable/usuario" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
