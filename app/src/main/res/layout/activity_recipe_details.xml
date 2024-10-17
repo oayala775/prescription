@@ -88,31 +88,52 @@
                         app:layout_constraintVertical_bias="0.495">
 
 
+                        <TextView
+                            android:id="@+id/text_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Nombre completo"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
+
                         <EditText
                             android:id="@+id/user_name"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginVertical="10dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="10dp"
                             android:background="@drawable/item_lista"
                             android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="Nombre Completo"
-                            android:inputType="text"
                             android:paddingHorizontal="15dp"
                             android:paddingVertical="10dp"
                             android:textColor="@color/black"
                             android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/text_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="ID paciente"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                         <EditText
                             android:id="@+id/user_id"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginVertical="10dp"
+                            android:layout_marginBottom="10dp"
                             android:background="@drawable/item_lista"
                             android:ems="10"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="ID Paciente: "
-                            android:inputType="text"
                             android:paddingHorizontal="15dp"
                             android:paddingVertical="10dp"
                             android:textColor="@color/black"
@@ -120,11 +141,22 @@
 
 
 
+
+                        <TextView
+                            android:id="@+id/text_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Fecha"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:textAlignment="center">
+                            android:textAlignment="center"
+                            android:layout_marginBottom="10dp">
+
 
                             <EditText
                                 android:id="@+id/user_day_recipe"
@@ -135,10 +167,11 @@
                                 android:background="@drawable/item_lista"                                android:ems="10"
                                 android:hint="Dia"
                                 android:layout_weight="1"
-                                android:inputType="text"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
-                                android:textSize="15sp"/>
+                                android:textSize="15sp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"/>
 
                             <EditText
                                 android:id="@+id/user_month_recipe"
@@ -149,10 +182,11 @@
                                 android:background="@drawable/item_lista"                                android:ems="10"
                                 android:hint="Mes"
                                 android:layout_weight="1"
-                                android:inputType="text"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
-                                android:textSize="15sp"/>
+                                android:textSize="15sp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"/>
 
                             <EditText
                                 android:id="@+id/user_year_recipe"
@@ -163,15 +197,22 @@
                                 android:background="@drawable/item_lista"                                android:ems="10"
                                 android:hint="Año"
                                 android:layout_weight="1"
-                                android:inputType="text"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
-                                android:textSize="15sp"/>
+                                android:textSize="15sp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"/>
 
                         </LinearLayout>
 
 
-
+                        <TextView
+                            android:id="@+id/text_data"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Edad   Estatura   Peso"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -188,10 +229,11 @@
                                 android:background="@drawable/item_lista"                                android:ems="10"
                                 android:hint="Edad"
                                 android:layout_weight="1"
-                                android:inputType="text"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
-                                android:textSize="15sp"/>
+                                android:textSize="15sp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"/>
 
                             <EditText
                                 android:id="@+id/user_height"
@@ -202,10 +244,11 @@
                                 android:background="@drawable/item_lista"                                android:ems="10"
                                 android:hint="Estatura"
                                 android:layout_weight="1"
-                                android:inputType="text"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
-                                android:textSize="15sp"/>
+                                android:textSize="15sp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"/>
 
                             <EditText
                                 android:id="@+id/user_weight"
@@ -216,21 +259,31 @@
                                 android:background="@drawable/item_lista"                                android:ems="10"
                                 android:hint="Peso"
                                 android:layout_weight="1"
-                                android:inputType="text"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
-                                android:textSize="15sp"/>
+                                android:textSize="15sp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"/>
 
                         </LinearLayout>
 
 
+
+                        <TextView
+                            android:id="@+id/text_diagnostic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Dianostico"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
                         <EditText
                             android:id="@+id/user_diagnostic"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:gravity="start"
-                            android:layout_marginVertical="10dp"
                             android:background="@drawable/item_lista"
                             android:ems="10"
                             android:hint="Diagnostico"
@@ -241,15 +294,25 @@
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             android:maxLines="5"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             />
 
 
+                        <TextView
+                            android:id="@+id/text_treatment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Tratamiento"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
                         <EditText
                             android:id="@+id/user_treatment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginVertical="10dp"
                             android:background="@drawable/item_lista"
                             android:ems="10"
                             android:hint="Tratamiento"
@@ -261,7 +324,20 @@
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             android:maxLines="10"
-                        />
+                            android:focusable="false"
+                            android:focusableInTouchMode="false" />
+
+                        <TextView
+                            android:id="@+id/status"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center"
+                            android:text="Receta expirada"
+                            android:textColor="#FF0000"
+                            android:textSize="34sp"
+                            android:textStyle="italic" />
 
 
 

@@ -3,17 +3,17 @@ package com.example.prescription;
 public class Receta {
 
     //Atributos
-    private String name = "a";
-    private String idPatient = "b";
-    private String age = "c";
+    private String name = "Daniel";
+    private String idPatient = "17102024";
+    private String age = "21";
     private String gender = "d";
-    private String stature = "e";
-    private String weight = "f";
+    private String stature = "1.80 m";
+    private String weight = "80 kg";
     private String diagnostic;
 
-    private String treatment = "g";
+    private String treatment = "paracetamol cada 8 horas";
     private String date;
-    private boolean status; // True -> Active, False -> Expired
+    private boolean status = false; // True -> Active, False -> Expired
 
 
 
@@ -44,6 +44,7 @@ public class Receta {
         this.diagnostic = diag;
     }
     public void setTreatment(String T) { this.treatment = T; }
+    public void setStatus(boolean S) { this.status = S; }
 
 
     //Getters
@@ -60,6 +61,7 @@ public class Receta {
         return this.diagnostic;
     }
     public String getTreatment(){ return this.treatment; }
+    public boolean getStatus(){ return this.status; }
 
 
 }

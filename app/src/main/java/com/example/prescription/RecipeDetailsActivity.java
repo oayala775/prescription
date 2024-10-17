@@ -2,7 +2,9 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +12,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
 
     private EditText fullName, id, day, month, year, age, height, weight, diagnostic, treatment;
+    private TextView status;
 
 
     @Override
@@ -34,6 +39,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         diagnostic = (EditText) findViewById(R.id.user_diagnostic);
         treatment = (EditText) findViewById(R.id.user_treatment);
 
+        status = (TextView) findViewById(R.id.status);
+
         // Details recipe
         Intent intent = getIntent();
 
@@ -50,5 +57,12 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         weight.setText(detailsRecipe.get(7));
         diagnostic.setText(detailsRecipe.get(8));
         treatment.setText(detailsRecipe.get(9));
+
+        if(detailsRecipe.get(10).equals("Expired")){
+            status.setVisibility(View.VISIBLE);
+        }
+        else{
+            status.setVisibility(View.GONE);
+        }
     }
 }
