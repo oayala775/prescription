@@ -69,6 +69,7 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
                 * weight
                 * Diagnostic
                 * Treatment
+                * status
                 * */
 
                 details_recipe.add(data.get(position).getName());
@@ -82,6 +83,14 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
                 details_recipe.add(data.get(position).getWeight());
                 details_recipe.add(data.get(position).getDiagnostic());
                 details_recipe.add(data.get(position).getTreatment());
+
+                if(data.get(position).getStatus()){
+                    details_recipe.add("Active");
+                }
+                else{
+                    details_recipe.add("Expired");
+                }
+
 
 
                 intent.putStringArrayListExtra("description_recipe", details_recipe);
