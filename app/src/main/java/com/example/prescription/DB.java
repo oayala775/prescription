@@ -17,7 +17,7 @@ public class DB extends SQLiteOpenHelper {
     //Creamos una tablas en la base de datos
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table datos_doctores(codigo text, nombre text, apellido text, telefono text, nss text, curp text, fechaNacimiento text, domicilio text, ciudad text, colonia text, cedula text)");
+        db.execSQL("create table datos_doctores(codigo text, nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, cedula text, nombreUsuario text, contrasena text)");
     }
 
     @Override
@@ -26,7 +26,7 @@ public class DB extends SQLiteOpenHelper {
     //metodo guardar registro
     //agregar al registro fecha de nacimiento, contraseña, y nombre de usuario
     //vamos a tener que comprobar los nombres de usuario y que las ocntraseñas coincidan
-    public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String cedula){
+    public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String cedula, String nombreUsuario, String contrasena){
         String mensaje = "";
 
         //permisos de escritura a la base
@@ -51,13 +51,15 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("ciudad", ciudad);
         contenedor.put("colonia",colonia);
         contenedor.put("cedula", cedula);
+        contenedor.put("nombreUsuario",nombreUsuario);
+        contenedor.put("contrasena", contrasena);
 
         //corroborar que se ingreso o no a la base de datos
         try{
             database.insertOrThrow("datos_doctores", null, contenedor);
             mensaje = "Ingresado correctamente";
         }
-        catch(SQLException e){mensaje = "No ingresado";}
+        catch(SQLException e){mensaje = "No ingresado: " + e.getMessage();}
         database.close();
         return mensaje;
     }

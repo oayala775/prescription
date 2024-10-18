@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpDoctorActivity extends AppCompatActivity {
 
-    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p;
+    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
     public TextView cedula_p;
     public Button guardar;
 
@@ -33,11 +33,16 @@ public class SignUpDoctorActivity extends AppCompatActivity {
         colonia_p = (EditText) findViewById(R.id.doctor_colonia);
         ciudad_p = (EditText) findViewById(R.id.doctor_ciudad);
         cedula_p = (EditText) findViewById(R.id.doctor_cedula);
+        nombreUsuario_p = (EditText) findViewById(R.id.doctor_nombre_usuario);
+        contrasena_p = (EditText) findViewById(R.id.doctor_password);
+        confirmarContrasena_p = (EditText) findViewById(R.id.doctor_confirm_password);
         guardar = (Button) findViewById(R.id.doctor_guardar);
 
         guardar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+
+
                 DB db = new DB(getApplicationContext(), null, null, 1);
                 String nombre = nombre_p.getText().toString();
                 String apellido = apellido_p.getText().toString();
@@ -48,7 +53,9 @@ public class SignUpDoctorActivity extends AppCompatActivity {
                 String colonia = colonia_p.getText().toString();
                 String ciudad = ciudad_p.getText().toString();
                 String cedula = cedula_p.getText().toString();
-                String mensaje = db.guardar(nombre,apellido,telefono, nss, curp, domicilio, ciudad, colonia, cedula);
+                String nombreUsuario = nombreUsuario_p.getText().toString();
+                String contrasena = contrasena_p.getText().toString();
+                String mensaje = db.guardar(nombre,apellido,telefono, nss, curp, domicilio, ciudad, colonia, cedula, nombreUsuario, contrasena);
                 Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
             }
         });
