@@ -102,7 +102,7 @@
                             android:textSize="20dp" />
 
                         <EditText
-                            android:id="@+id/user_nombre"
+                            android:id="@+id/doctor_nombre"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -113,7 +113,7 @@
                             android:paddingStart="15dp"  />
 
                         <EditText
-                            android:id="@+id/user_apellidos"
+                            android:id="@+id/doctor_apellido"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -124,7 +124,7 @@
                             android:paddingStart="15dp"  />
 
                         <EditText
-                            android:id="@+id/user_telefono"
+                            android:id="@+id/doctor_telefono"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -135,7 +135,7 @@
                             android:paddingStart="15dp"  />
 
                         <EditText
-                            android:id="@+id/user_nss"
+                            android:id="@+id/doctor_nss"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -146,7 +146,7 @@
                             android:paddingStart="15dp"  />
 
                         <EditText
-                            android:id="@+id/user_curp"
+                            android:id="@+id/doctor_curp"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -157,7 +157,7 @@
                             android:paddingStart="15dp"  />
 
                         <EditText
-                            android:id="@+id/user_cedula"
+                            android:id="@+id/doctor_cedula"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -168,7 +168,7 @@
                             android:paddingStart="15dp" />
 
                         <TextView
-                            android:id="@+id/text_fechaNacimiento"
+                            android:id="@+id/doctor_fechaNacimiento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -186,7 +186,7 @@
                             android:textAlignment="center">
 
                             <EditText
-                                android:id="@+id/user_day"
+                                android:id="@+id/doctor_day"
                                 android:layout_width="60dp"
                                 android:layout_height="48dp"
                                 android:layout_marginVertical="10dp"
@@ -199,7 +199,7 @@
                                 android:textAlignment="center" />
 
                             <EditText
-                                android:id="@+id/user_month"
+                                android:id="@+id/doctor_month"
                                 android:layout_width="60dp"
                                 android:layout_height="48dp"
                                 android:layout_marginVertical="10dp"
@@ -212,7 +212,7 @@
                                 android:textAlignment="center" />
 
                             <EditText
-                                android:id="@+id/user_year"
+                                android:id="@+id/doctor_year"
                                 android:layout_width="60dp"
                                 android:layout_height="48dp"
                                 android:layout_marginVertical="10dp"
@@ -237,7 +237,7 @@
                             android:textSize="20dp" />
 
                         <EditText
-                            android:id="@+id/user_domicilio"
+                            android:id="@+id/doctor_domicilio"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -248,7 +248,7 @@
                             android:paddingStart="15dp" />
 
                         <EditText
-                            android:id="@+id/user_colonia"
+                            android:id="@+id/doctor_colonia"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -259,7 +259,7 @@
                             android:paddingStart="15dp" />
 
                         <EditText
-                            android:id="@+id/user_ciudad"
+                            android:id="@+id/doctor_ciudad"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
@@ -276,35 +276,46 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:gravity="center"
-                            android:text="Contraseña"
+                            android:text="Usiario"
                             android:textColor="#d9d9d9"
                             android:textSize="20dp" />
 
                         <EditText
-                            android:id="@+id/user_password"
+                            android:id="@+id/doctor_nombre_usuario"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Nombre usuario"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_password"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
                             android:background="@drawable/rounded_edittext_background"
                             android:ems="10"
                             android:hint="Contraseña"
-                            android:inputType="text"
+                            android:inputType="textPassword"
                             android:paddingStart="15dp" />
 
                         <EditText
-                            android:id="@+id/user_confirm_password"
+                            android:id="@+id/doctor_confirm_password"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginVertical="10dp"
                             android:background="@drawable/rounded_edittext_background"
                             android:ems="10"
                             android:hint="Confirmar contraseña"
-                            android:inputType="text"
+                            android:inputType="textPassword"
                             android:paddingStart="15dp" />
 
 
                         <TextView
-                            android:id="@+id/foto_perfil"
+                            android:id="@+id/doctor_foto_perfil"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -322,14 +333,14 @@
 
 
                             <Button
-                                android:id="@+id/buttonRegister"
+                                android:id="@+id/doctor_guardar"
                                 style="@style/link_button"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="10dp"
-                                android:gravity="center|end"
+                                android:gravity="center"
                                 android:onClick="goToLogin"
-                                android:text="Siguiente >"
+                                android:text="Registar"
                                 android:textSize="20sp" />
 
                         </LinearLayout>
