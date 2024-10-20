@@ -13,8 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpDoctorActivity extends AppCompatActivity {
 
-    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
-    public TextView cedula_p;
+    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, cedula_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
     public Button guardar;
     String[] cedulasValidas = {"111111", "222222", "333333"};
     boolean contrasenaValida = false;
@@ -92,12 +91,5 @@ public class SignUpDoctorActivity extends AppCompatActivity {
                 }
             }
         });
-
-    }
-
-
-    public void goToLogin(View view){
-        Intent intent = new Intent(SignUpDoctorActivity.this, LoginActivity.class);
-        startActivity(intent);
     }
 }
