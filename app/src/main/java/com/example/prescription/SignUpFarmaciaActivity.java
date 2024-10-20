@@ -52,8 +52,8 @@ public class SignUpFarmaciaActivity extends AppCompatActivity {
                     DB db = new DB(getApplicationContext(), null, null, 1);
                     String mensaje = db.guardar(nombre, telefono, domicilio, ciudad, colonia, nombreUsuario, contrasena);
                     Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
-                    ;Intent intent = new Intent(SignUpFarmaciaActivity.this, LoginActivity.class);
-                    ;startActivity(intent);
+                    Intent intent = new Intent(SignUpFarmaciaActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Las contraseñas NO coinciden", Toast.LENGTH_SHORT).show();
                     contrasena_p.setText("");
