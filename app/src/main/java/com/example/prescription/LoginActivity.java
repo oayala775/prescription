@@ -9,9 +9,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 
 public class LoginActivity extends AppCompatActivity{
-
     public Button registerButton;
     public Button logInButton;
 
@@ -34,22 +35,41 @@ public class LoginActivity extends AppCompatActivity{
         password = findViewById(R.id.password);
 
         logInButton.setOnClickListener(v -> {
+            ArrayList<String> tuple = new ArrayList<>(2);
+
             userString = user.getText().toString();
             passwordString = password.getText().toString();
 
-            if(userString.equalsIgnoreCase("usuario") && passwordString.equalsIgnoreCase("usuario")){
-                Intent intent = new Intent(LoginActivity.this, HomeUserActivity.class);
-                startActivity(intent);
-            }else{
-                Toast.makeText(getApplicationContext(), "Cerdenciales invalidas",Toast.LENGTH_SHORT).show();
-
+            DB db = new DB(getApplicationContext(), null, null, 1);
+            if (db.usuarioExistente(userString)){
+                tuple = db.contrasenaExistente(userString);
+                if(passwordString.equals(tuple.get(0))){
+                    if(tuple.get(1).equals("doctor")){
+                        Intent intent = new Intent(LoginActivity.this, PerfilDoctorActivity.class);
+                        startActivity(intent);
+                    } else if(tuple.get(1).equals("paciente")){
+                        Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
+                        startActivity(intent);
+                    } else if(tuple.get(1).equals("farmacia")){
+                        Intent intent = new Intent(LoginActivity.this, PerfilFarmaciaActivity.class);
+                        startActivity(intent);
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                    password.setText("");
+                }
             }
+            else {
+                Toast.makeText(LoginActivity.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                user.setText("");
+            }
+
         });
         registerButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
         });
     }
-    
+
 
 }

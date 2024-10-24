@@ -2,9 +2,12 @@ package com.example.prescription;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 //to-do agregar al registro fecha de nacimiento
@@ -19,9 +22,9 @@ public class DB extends SQLiteOpenHelper {
     //Creamos una tablas en la base de datos
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table datos_doctores(codigo text, nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, cedula text, nombreUsuario text, contrasena text)");
-        db.execSQL("create table datos_pacientes(codigo text, nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
-        db.execSQL("create table datos_farmacia(codigo text, nombre text, telefono text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
+        db.execSQL("CREATE TABLE datos_doctores(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, cedula TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
+        db.execSQL("CREATE TABLE datos_pacientes(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
+        db.execSQL("CREATE TABLE datos_farmacia(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, telefono TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
     }
 
     @Override
@@ -35,14 +38,6 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contenedor = new ContentValues();
 
-        //generar código
-        Random random = new Random();
-        int minimo = 111111111;
-        int maximo = 999999999;
-        int codigo = random.nextInt((maximo - minimo) + 1) + minimo;
-        //TO-DO checar que el código no este en uso
-
-        contenedor.put("codigo", codigo);
         contenedor.put("nombre", nombre);
         contenedor.put("apellido", apellido);
         contenedor.put("telefono", telefono);
@@ -54,6 +49,8 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("colonia",colonia);
         contenedor.put("nombreUsuario",nombreUsuario);
         contenedor.put("contrasena", contrasena);
+        contenedor.put("rol", "doctor");
+        contenedor.put("cedula", cedula);
 
         //corroborar que se ingreso o no a la base de datos
         try{
@@ -73,14 +70,6 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contenedor = new ContentValues();
 
-        //generar código
-        Random random = new Random();
-        int minimo = 111111111;
-        int maximo = 999999999;
-        int codigo = random.nextInt((maximo - minimo) + 1) + minimo;
-        //TO-DO checar que el código no este en uso
-
-        contenedor.put("codigo", codigo);
         contenedor.put("nombre", nombre);
         contenedor.put("apellido", apellido);
         contenedor.put("telefono", telefono);
@@ -92,6 +81,8 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("colonia",colonia);
         contenedor.put("nombreUsuario",nombreUsuario);
         contenedor.put("contrasena", contrasena);
+        contenedor.put("rol", "paciente");
+
 
         //corroborar que se ingreso o no a la base de datos
         try{
@@ -111,14 +102,6 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contenedor = new ContentValues();
 
-        //generar código
-        Random random = new Random();
-        int minimo = 111111111;
-        int maximo = 999999999;
-        int codigo = random.nextInt((maximo - minimo) + 1) + minimo;
-        //TO-DO checar que el código no este en uso
-
-        contenedor.put("codigo", codigo);
         contenedor.put("nombre", nombre);
         contenedor.put("telefono", telefono);
         //contenedor.put("fechaNacimiento", fechaNacimiento);
@@ -127,6 +110,8 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("colonia",colonia);
         contenedor.put("nombreUsuario",nombreUsuario);
         contenedor.put("contrasena", contrasena);
+        contenedor.put("rol", "farmacia");
+
 
         //corroborar que se ingreso o no a la base de datos
         try{
@@ -136,6 +121,81 @@ public class DB extends SQLiteOpenHelper {
         catch(SQLException e){mensaje = "No ingresado: " + e.getMessage();}
         database.close();
         return mensaje;
+    }
+
+    public Boolean validarUsuario(String nombreUsuario) {
+        int count = 0;
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //hacer una consulta en varias tablas
+        String q = "SELECT COUNT(*) FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT COUNT(*) FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT COUNT(*) FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
+
+        Cursor registros = database.rawQuery(q, null);
+
+        // Itera sobre los resultados y suma los valores obtenidos
+        while (registros.moveToNext()) {
+            count += registros.getInt(0); // Suma el resultado de cada tabla
+        }
+
+        registros.close();
+        database.close();
+
+        // Retorna true si no hay coincidencias, false si las hay
+        return count == 0;
+    }
+
+    public Boolean usuarioExistente(String nombreUsuario){
+        ArrayList<String> tuple = new ArrayList<>(2);
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        //hacer una consulta en varias tablas
+        String query = String.format("SELECT nombreUsuario, rol FROM (" +
+                "SELECT nombreUsuario, rol FROM datos_pacientes WHERE nombreUsuario = ? UNION " +
+                "SELECT nombreUsuario, rol FROM datos_doctores WHERE nombreUsuario = ? UNION " +
+                "SELECT nombreUsuario, rol FROM datos_farmacia WHERE nombreUsuario = ?) LIMIT 1;");
+
+        Cursor cursor = database.rawQuery(query, new String[]{nombreUsuario,nombreUsuario,nombreUsuario});
+
+
+        if (cursor.moveToFirst()) {
+            database.close();   // Successful login
+            return true;
+        } else {
+            cursor.close();
+            database.close();
+            return false; // Login failed
+        }
+
+    }
+
+    public ArrayList<String> contrasenaExistente(String nombreUsuario){
+        ArrayList<String> tuple = new ArrayList<>(2);
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        //hacer una consulta en varias tablas
+        String query = String.format("SELECT contrasena, rol FROM (" +
+                "SELECT contrasena, rol FROM datos_pacientes WHERE nombreUsuario = ? UNION " +
+                "SELECT contrasena, rol FROM datos_doctores WHERE nombreUsuario = ? UNION " +
+                "SELECT contrasena, rol FROM datos_farmacia WHERE nombreUsuario = ?) LIMIT 1;");
+
+        Cursor cursor = database.rawQuery(query, new String[]{nombreUsuario,nombreUsuario,nombreUsuario});
+
+
+        if (cursor.moveToFirst()) {
+            tuple.add(cursor.getString(0));
+            tuple.add(cursor.getString(1));
+            database.close();   // Successful login
+            return tuple;
+        } else {
+            cursor.close();
+            database.close();
+            return null; // Login failed
+        }
     }
 
 
