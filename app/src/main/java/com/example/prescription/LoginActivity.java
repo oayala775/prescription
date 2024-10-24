@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity{
     public Button registerButton;
     public Button logInButton;
     public EditText nombreUsuarioET, contrasenaET;
+    String tablaenDB = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +32,23 @@ public class LoginActivity extends AppCompatActivity{
 
         logInButton.setOnClickListener(v -> {
             DB db = new DB(getApplicationContext(), null, null, 1);
-            if(db.usuarioExistente(nombreUsuario)){
-                String[] contrasenaYTabla = db.login(nombreUsuario);
-                Intent intent = new Intent(LoginActivity.this, HomeUserActivity.class);
-                startActivity(intent);
-            }else{
-                Toast.makeText(getApplicationContext(), "Usuario NO valido", Toast.LENGTH_SHORT).show();
-                nombreUsuarioET.setText("");
-            }
+            tablaenDB = db.usuarioExistente(nombreUsuario);
+            Toast.makeText(getApplicationContext(), tablaenDB, Toast.LENGTH_SHORT).show();
+//            System.out.println(tablaenDB);
+//            if(contrasena.equals(db.login(nombreUsuario))){
+//                Toast.makeText(getApplicationContext(), "contraseña correcta", Toast.LENGTH_SHORT).show();
+//            }else{
+//                Toast.makeText(getApplicationContext(), "contraseña incorrecta", Toast.LENGTH_SHORT).show();
+//            }
+
+//            if(tablaenDB.equals("doctores")){
+//                String[] contrasenaYTabla = db.login(nombreUsuario);
+//                Intent intent = new Intent(LoginActivity.this, HomeUserActivity.class);
+//                startActivity(intent);
+//            }else{
+//                Toast.makeText(getApplicationContext(), "Usuario NO valido", Toast.LENGTH_SHORT).show();
+//                nombreUsuarioET.setText("");
+//            }
 
         });
         registerButton.setOnClickListener(v -> {

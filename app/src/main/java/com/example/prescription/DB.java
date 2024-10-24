@@ -141,59 +141,75 @@ public class DB extends SQLiteOpenHelper {
         return count == 0;
     }
 
-    public boolean usuarioExistente(String nombreUsuario){
-        int count = 0;
-
-        SQLiteDatabase database = this.getWritableDatabase();
-
-        //hacer una consulta en varias tablas
-        String q = "SELECT COUNT(*) FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
-                "UNION " +
-                "SELECT COUNT(*) FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
-                "UNION " +
-                "SELECT COUNT(*) FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
-
-        Cursor registros = database.rawQuery(q, null);
-
-        // Itera sobre los resultados y suma los valores obtenidos
-        while (registros.moveToNext()) {
-            count += registros.getInt(0); // Suma el resultado de cada tabla
-        }
-
-        registros.close();
-        database.close();
-
-        // Retorna true si no hay coincidencias, false si las hay
-        return count == 1;
-    }
-
-    public String[] login(String nombreUsuario){
-        String contrasenaEnDB = null;
+    public String usuarioExistente(String nombreUsuario){
+        int count_d = 0;
+        int count_f = 0;
+        int count_p = 0;
         String tabla = "";
 
         SQLiteDatabase database = this.getWritableDatabase();
 
         //hacer una consulta en varias tablas
-        String q = "SELECT nombreUsuario, 'datos_doctores' AS origen FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
+        String q_doctores = "SELECT COUNT(*) FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'";
+        String q_farmacia = "SELECT COUNT(*) FROM datos_farmacia WHERE nombreUsuario = '" + nombreUsuario + "'";
+        String q_pacientes = "SELECT COUNT(*) FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'";
+
+        Cursor registros_doctores = database.rawQuery(q_doctores, null);
+        Cursor registros_farmacia = database.rawQuery(q_farmacia, null);
+        Cursor registros_pacientes = database.rawQuery(q_pacientes, null);
+
+        while (registros_doctores.moveToNext()) {
+            count_d += registros_doctores.getInt(0); // Suma el resultado de cada tabla
+        }
+        while (registros_farmacia.moveToNext()) {
+            count_f += registros_farmacia.getInt(0); // Suma el resultado de cada tabla
+        }
+        while (registros_pacientes.moveToNext()) {
+            count_p += registros_pacientes.getInt(0); // Suma el resultado de cada tabla
+        }
+
+        if(count_d>0){
+            tabla="doctores";
+        }else if (count_f>0) {
+            tabla="farmacia";
+        }else if (count_p>0){
+            tabla="pacientes";
+        }else{
+            tabla="no encontrado";
+        }
+
+        registros_doctores.close();
+        registros_farmacia.close();
+        registros_pacientes.close();
+        database.close();
+
+        return tabla;
+    }
+
+    public String login(String nombreUsuario){
+        String contrasenaEnDB = null;
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //hacer una consulta en varias tablas
+        String q = "SELECT contrasena FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
                 "UNION " +
-                "SELECT  nombreUsuario, 'datos_farmacia' AS origen FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
+                "SELECT  contrasena FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
                 "UNION " +
-                "SELECT  nombreUsuario, 'datos_pacientes' AS origen FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
+                "SELECT  contrasena FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
 
         Cursor registros = database.rawQuery(q, null);
 
         if (registros.moveToFirst()) { // Verifica si hay resultados
             int indiceContrasena = registros.getColumnIndex("contrasena");
-            int indiceOrigen = registros.getColumnIndex("origen");
-
             contrasenaEnDB = registros.getString(indiceContrasena);
-            tabla = registros.getString(indiceOrigen);
+
         }
 
         registros.close();
         database.close();
 
-        return new String[]{contrasenaEnDB, tabla};
+        return contrasenaEnDB;
     }
 
 
