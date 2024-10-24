@@ -2,6 +2,7 @@ package com.example.prescription;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,9 +20,9 @@ public class DB extends SQLiteOpenHelper {
     //Creamos una tablas en la base de datos
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table datos_doctores(codigo text, nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, cedula text, nombreUsuario text, contrasena text)");
-        db.execSQL("create table datos_pacientes(codigo text, nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
-        db.execSQL("create table datos_farmacia(codigo text, nombre text, telefono text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
+        db.execSQL("create table datos_doctores(nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, cedula text, nombreUsuario text, contrasena text)");
+        db.execSQL("create table datos_pacientes(nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
+        db.execSQL("create table datos_farmacia(nombre text, telefono text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
     }
 
     @Override
@@ -35,14 +36,6 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contenedor = new ContentValues();
 
-        //generar código
-        Random random = new Random();
-        int minimo = 111111111;
-        int maximo = 999999999;
-        int codigo = random.nextInt((maximo - minimo) + 1) + minimo;
-        //TO-DO checar que el código no este en uso
-
-        contenedor.put("codigo", codigo);
         contenedor.put("nombre", nombre);
         contenedor.put("apellido", apellido);
         contenedor.put("telefono", telefono);
@@ -73,14 +66,6 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contenedor = new ContentValues();
 
-        //generar código
-        Random random = new Random();
-        int minimo = 111111111;
-        int maximo = 999999999;
-        int codigo = random.nextInt((maximo - minimo) + 1) + minimo;
-        //TO-DO checar que el código no este en uso
-
-        contenedor.put("codigo", codigo);
         contenedor.put("nombre", nombre);
         contenedor.put("apellido", apellido);
         contenedor.put("telefono", telefono);
@@ -111,14 +96,6 @@ public class DB extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contenedor = new ContentValues();
 
-        //generar código
-        Random random = new Random();
-        int minimo = 111111111;
-        int maximo = 999999999;
-        int codigo = random.nextInt((maximo - minimo) + 1) + minimo;
-        //TO-DO checar que el código no este en uso
-
-        contenedor.put("codigo", codigo);
         contenedor.put("nombre", nombre);
         contenedor.put("telefono", telefono);
         //contenedor.put("fechaNacimiento", fechaNacimiento);
@@ -136,6 +113,87 @@ public class DB extends SQLiteOpenHelper {
         catch(SQLException e){mensaje = "No ingresado: " + e.getMessage();}
         database.close();
         return mensaje;
+    }
+
+    public Boolean validarUsuario(String nombreUsuario) {
+        int count = 0;
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //hacer una consulta en varias tablas
+        String q = "SELECT COUNT(*) FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT COUNT(*) FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT COUNT(*) FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
+
+        Cursor registros = database.rawQuery(q, null);
+
+        // Itera sobre los resultados y suma los valores obtenidos
+        while (registros.moveToNext()) {
+            count += registros.getInt(0); // Suma el resultado de cada tabla
+        }
+
+        registros.close();
+        database.close();
+
+        // Retorna true si no hay coincidencias, false si las hay
+        return count == 0;
+    }
+
+    public boolean usuarioExistente(String nombreUsuario){
+        int count = 0;
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //hacer una consulta en varias tablas
+        String q = "SELECT COUNT(*) FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT COUNT(*) FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT COUNT(*) FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
+
+        Cursor registros = database.rawQuery(q, null);
+
+        // Itera sobre los resultados y suma los valores obtenidos
+        while (registros.moveToNext()) {
+            count += registros.getInt(0); // Suma el resultado de cada tabla
+        }
+
+        registros.close();
+        database.close();
+
+        // Retorna true si no hay coincidencias, false si las hay
+        return count == 1;
+    }
+
+    public String[] login(String nombreUsuario){
+        String contrasenaEnDB = null;
+        String tabla = "";
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        //hacer una consulta en varias tablas
+        String q = "SELECT nombreUsuario, 'datos_doctores' AS origen FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT  nombreUsuario, 'datos_farmacia' AS origen FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
+                "UNION " +
+                "SELECT  nombreUsuario, 'datos_pacientes' AS origen FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
+
+        Cursor registros = database.rawQuery(q, null);
+
+        if (registros.moveToFirst()) { // Verifica si hay resultados
+            int indiceContrasena = registros.getColumnIndex("contrasena");
+            int indiceOrigen = registros.getColumnIndex("origen");
+
+            contrasenaEnDB = registros.getString(indiceContrasena);
+            tabla = registros.getString(indiceOrigen);
+        }
+
+        registros.close();
+        database.close();
+
+        return new String[]{contrasenaEnDB, tabla};
     }
 
 

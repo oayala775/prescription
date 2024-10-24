@@ -70,10 +70,15 @@ public class SignUpDoctorActivity extends AppCompatActivity {
 
                 if(contrasenaValida && cedulaValida){
                     DB db = new DB(getApplicationContext(), null, null, 1);
-                    String mensaje = db.guardar(nombre,apellido,telefono, nss, curp, domicilio, ciudad, colonia, cedula, nombreUsuario, contrasena);
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignUpDoctorActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    if(db.validarUsuario(nombreUsuario)){
+                        String mensaje = db.guardar(nombre,apellido,telefono, nss, curp, domicilio, ciudad, colonia, cedula, nombreUsuario, contrasena);
+                        Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUpDoctorActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Nombre de usuario no disponible", Toast.LENGTH_SHORT).show();
+                        nombreUsuario_p.setText("");
+                    }
                 }else{
                     if(!contrasenaValida && cedulaValida){
                         Toast.makeText(getApplicationContext(), "Las contraseñas NO coinciden", Toast.LENGTH_SHORT).show();
