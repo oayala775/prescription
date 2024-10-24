@@ -58,6 +58,7 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
 
                 if (contrasenaValida) {
                     DB db = new DB(getApplicationContext(), null, null, 1);
+<<<<<<< HEAD
                     if(db.validarUsuario(nombreUsuario)){
                         String mensaje = db.guardar(nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena);
                         Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
@@ -67,6 +68,12 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Nombre de usuario no disponible", Toast.LENGTH_SHORT).show();
                         nombreUsuario_p.setText("");
                     }
+=======
+                    String mensaje = db.guardar(nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena);
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUpUsuarioActivity.this, LoginActivity.class);
+                    startActivity(intent);
+>>>>>>> 481f7e1b41e3444308041fc88b475d0ac06b85fc
                 } else {
                     Toast.makeText(getApplicationContext(), "Las contraseñas NO coinciden", Toast.LENGTH_SHORT).show();
                     contrasena_p.setText("");
