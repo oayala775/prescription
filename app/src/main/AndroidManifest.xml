@@ -51,6 +51,9 @@
         <!-- Queremos que carge perfil farmacia-->
         <activity android:name=".PerfilFarmaciaActivity" />
 
+        <!-- Queremos que carge la descripcion de la receta del usuario -->
+        <activity android:name=".RecipeDetailsActivity" />
+
 
     </application>
 

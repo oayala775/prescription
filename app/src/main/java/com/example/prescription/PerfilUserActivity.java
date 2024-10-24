@@ -1,7 +1,10 @@
 package com.example.prescription;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +17,8 @@ import java.time.format.DateTimeFormatter;
 public class PerfilUserActivity extends AppCompatActivity {
     public EditText nombre, apellido, telefono, nss, curp, fecha_nacimiento, domicilio, ciudad, colonia;
     public TextView codigo;
+
+    private ImageView HomeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +60,15 @@ public class PerfilUserActivity extends AppCompatActivity {
         colonia.setText(colonia_parametro);
         ciudad.setText(ciudad_parametro);
 
+
+        // Buttons
+        HomeButton = findViewById(R.id.homeButton);
+        HomeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilUserActivity.this, HomeUserActivity.class);
+            startActivity(intent);
+        });
+
     }
+
+
 }

@@ -15,6 +15,12 @@
         <item name="android:background">@drawable/rounded_background</item>
     </style>
 
+    <style name="cardBlank">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
     <style name="roundedImageViewRounded">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>

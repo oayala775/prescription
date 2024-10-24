@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 //to-do agregar al registro fecha de nacimiento
@@ -20,9 +22,9 @@ public class DB extends SQLiteOpenHelper {
     //Creamos una tablas en la base de datos
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table datos_doctores(nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, cedula text, nombreUsuario text, contrasena text)");
-        db.execSQL("create table datos_pacientes(nombre text, apellido text, telefono text, nss text, curp text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
-        db.execSQL("create table datos_farmacia(nombre text, telefono text, domicilio text, ciudad text, colonia text, nombreUsuario text, contrasena text)");
+        db.execSQL("CREATE TABLE datos_doctores(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, cedula TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
+        db.execSQL("CREATE TABLE datos_pacientes(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
+        db.execSQL("CREATE TABLE datos_farmacia(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, telefono TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
     }
 
     @Override
@@ -47,6 +49,8 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("colonia",colonia);
         contenedor.put("nombreUsuario",nombreUsuario);
         contenedor.put("contrasena", contrasena);
+        contenedor.put("rol", "doctor");
+        contenedor.put("cedula", cedula);
 
         //corroborar que se ingreso o no a la base de datos
         try{
@@ -77,6 +81,8 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("colonia",colonia);
         contenedor.put("nombreUsuario",nombreUsuario);
         contenedor.put("contrasena", contrasena);
+        contenedor.put("rol", "paciente");
+
 
         //corroborar que se ingreso o no a la base de datos
         try{
@@ -104,6 +110,8 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("colonia",colonia);
         contenedor.put("nombreUsuario",nombreUsuario);
         contenedor.put("contrasena", contrasena);
+        contenedor.put("rol", "farmacia");
+
 
         //corroborar que se ingreso o no a la base de datos
         try{
@@ -141,75 +149,53 @@ public class DB extends SQLiteOpenHelper {
         return count == 0;
     }
 
-    public String usuarioExistente(String nombreUsuario){
-        int count_d = 0;
-        int count_f = 0;
-        int count_p = 0;
-        String tabla = "";
-
-        SQLiteDatabase database = this.getWritableDatabase();
+    public Boolean usuarioExistente(String nombreUsuario){
+        ArrayList<String> tuple = new ArrayList<>(2);
+        SQLiteDatabase database = this.getReadableDatabase();
 
         //hacer una consulta en varias tablas
-        String q_doctores = "SELECT COUNT(*) FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'";
-        String q_farmacia = "SELECT COUNT(*) FROM datos_farmacia WHERE nombreUsuario = '" + nombreUsuario + "'";
-        String q_pacientes = "SELECT COUNT(*) FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'";
+        String query = String.format("SELECT nombreUsuario, rol FROM (" +
+                "SELECT nombreUsuario, rol FROM datos_pacientes WHERE nombreUsuario = ? UNION " +
+                "SELECT nombreUsuario, rol FROM datos_doctores WHERE nombreUsuario = ? UNION " +
+                "SELECT nombreUsuario, rol FROM datos_farmacia WHERE nombreUsuario = ?) LIMIT 1;");
 
-        Cursor registros_doctores = database.rawQuery(q_doctores, null);
-        Cursor registros_farmacia = database.rawQuery(q_farmacia, null);
-        Cursor registros_pacientes = database.rawQuery(q_pacientes, null);
+        Cursor cursor = database.rawQuery(query, new String[]{nombreUsuario,nombreUsuario,nombreUsuario});
 
-        while (registros_doctores.moveToNext()) {
-            count_d += registros_doctores.getInt(0); // Suma el resultado de cada tabla
-        }
-        while (registros_farmacia.moveToNext()) {
-            count_f += registros_farmacia.getInt(0); // Suma el resultado de cada tabla
-        }
-        while (registros_pacientes.moveToNext()) {
-            count_p += registros_pacientes.getInt(0); // Suma el resultado de cada tabla
-        }
 
-        if(count_d>0){
-            tabla="doctores";
-        }else if (count_f>0) {
-            tabla="farmacia";
-        }else if (count_p>0){
-            tabla="pacientes";
-        }else{
-            tabla="no encontrado";
+        if (cursor.moveToFirst()) {
+            database.close();   // Successful login
+            return true;
+        } else {
+            cursor.close();
+            database.close();
+            return false; // Login failed
         }
 
-        registros_doctores.close();
-        registros_farmacia.close();
-        registros_pacientes.close();
-        database.close();
-
-        return tabla;
     }
 
-    public String login(String nombreUsuario){
-        String contrasenaEnDB = null;
-
-        SQLiteDatabase database = this.getWritableDatabase();
+    public ArrayList<String> contrasenaExistente(String nombreUsuario){
+        ArrayList<String> tuple = new ArrayList<>(2);
+        SQLiteDatabase database = this.getReadableDatabase();
 
         //hacer una consulta en varias tablas
-        String q = "SELECT contrasena FROM datos_doctores WHERE nombreUsuario = '" + nombreUsuario + "'" +
-                "UNION " +
-                "SELECT  contrasena FROM datos_farmacia WHERE nombreUsuario  = '" + nombreUsuario + "'" +
-                "UNION " +
-                "SELECT  contrasena FROM datos_pacientes WHERE nombreUsuario = '" + nombreUsuario + "'" ;
+        String query = String.format("SELECT contrasena, rol FROM (" +
+                "SELECT contrasena, rol FROM datos_pacientes WHERE nombreUsuario = ? UNION " +
+                "SELECT contrasena, rol FROM datos_doctores WHERE nombreUsuario = ? UNION " +
+                "SELECT contrasena, rol FROM datos_farmacia WHERE nombreUsuario = ?) LIMIT 1;");
 
-        Cursor registros = database.rawQuery(q, null);
+        Cursor cursor = database.rawQuery(query, new String[]{nombreUsuario,nombreUsuario,nombreUsuario});
 
-        if (registros.moveToFirst()) { // Verifica si hay resultados
-            int indiceContrasena = registros.getColumnIndex("contrasena");
-            contrasenaEnDB = registros.getString(indiceContrasena);
 
+        if (cursor.moveToFirst()) {
+            tuple.add(cursor.getString(0));
+            tuple.add(cursor.getString(1));
+            database.close();   // Successful login
+            return tuple;
+        } else {
+            cursor.close();
+            database.close();
+            return null; // Login failed
         }
-
-        registros.close();
-        database.close();
-
-        return contrasenaEnDB;
     }
 
 

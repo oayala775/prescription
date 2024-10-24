@@ -9,12 +9,17 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 
 public class LoginActivity extends AppCompatActivity{
     public Button registerButton;
     public Button logInButton;
-    public EditText nombreUsuarioET, contrasenaET;
-    String tablaenDB = "";
+
+    public EditText user, password;
+    public String userString, passwordString;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,31 +29,40 @@ public class LoginActivity extends AppCompatActivity{
 
         logInButton = findViewById(R.id.buttonLogIn);
         registerButton = findViewById(R.id.buttonRegister);
-        nombreUsuarioET = findViewById(R.id.user);
-        contrasenaET = findViewById(R.id.password);
 
-        String nombreUsuario = nombreUsuarioET.getText().toString();
-        String contrasena = contrasenaET.getText().toString();
+        // user, password
+        user = findViewById(R.id.user);
+        password = findViewById(R.id.password);
 
         logInButton.setOnClickListener(v -> {
-            DB db = new DB(getApplicationContext(), null, null, 1);
-            tablaenDB = db.usuarioExistente(nombreUsuario);
-            Toast.makeText(getApplicationContext(), tablaenDB, Toast.LENGTH_SHORT).show();
-//            System.out.println(tablaenDB);
-//            if(contrasena.equals(db.login(nombreUsuario))){
-//                Toast.makeText(getApplicationContext(), "contraseña correcta", Toast.LENGTH_SHORT).show();
-//            }else{
-//                Toast.makeText(getApplicationContext(), "contraseña incorrecta", Toast.LENGTH_SHORT).show();
-//            }
+            ArrayList<String> tuple = new ArrayList<>(2);
 
-//            if(tablaenDB.equals("doctores")){
-//                String[] contrasenaYTabla = db.login(nombreUsuario);
-//                Intent intent = new Intent(LoginActivity.this, HomeUserActivity.class);
-//                startActivity(intent);
-//            }else{
-//                Toast.makeText(getApplicationContext(), "Usuario NO valido", Toast.LENGTH_SHORT).show();
-//                nombreUsuarioET.setText("");
-//            }
+            userString = user.getText().toString();
+            passwordString = password.getText().toString();
+
+            DB db = new DB(getApplicationContext(), null, null, 1);
+            if (db.usuarioExistente(userString)){
+                tuple = db.contrasenaExistente(userString);
+                if(passwordString.equals(tuple.get(0))){
+                    if(tuple.get(1).equals("doctor")){
+                        Intent intent = new Intent(LoginActivity.this, PerfilDoctorActivity.class);
+                        startActivity(intent);
+                    } else if(tuple.get(1).equals("paciente")){
+                        Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
+                        startActivity(intent);
+                    } else if(tuple.get(1).equals("farmacia")){
+                        Intent intent = new Intent(LoginActivity.this, PerfilFarmaciaActivity.class);
+                        startActivity(intent);
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                    password.setText("");
+                }
+            }
+            else {
+                Toast.makeText(LoginActivity.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                user.setText("");
+            }
 
         });
         registerButton.setOnClickListener(v -> {
@@ -56,6 +70,6 @@ public class LoginActivity extends AppCompatActivity{
             startActivity(intent);
         });
     }
-    
+
 
 }
