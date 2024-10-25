@@ -240,4 +240,24 @@ public class DB extends SQLiteOpenHelper {
         database.close();
         return datos;
     }
+
+    public ArrayList<String> obtenerDatosFarmacia(String nombreUsuario){
+        ArrayList<String> datos = new ArrayList<>();
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        String query = "SELECT * FROM datos_farmacia WHERE nombreUsuario = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{nombreUsuario});
+
+        //Verificamos si hay resultados
+        if(cursor.moveToFirst()){
+            int numColumns = cursor.getColumnCount();
+
+            for(int i = 0; i < numColumns; i++){
+                datos.add(cursor.getString(i));
+            }
+        }
+        cursor.close();
+        database.close();
+        return datos;
+    }
 }
