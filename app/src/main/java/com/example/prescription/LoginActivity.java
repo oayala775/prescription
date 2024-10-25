@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity{
                 if(passwordString.equals(tuple.get(0))){
                     if(tuple.get(1).equals("doctor")){
                         Intent intent = new Intent(LoginActivity.this, PerfilDoctorActivity.class);
+                        intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userString));
                         startActivity(intent);
                     } else if(tuple.get(1).equals("paciente")){
                         Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);

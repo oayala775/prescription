@@ -1,5 +1,6 @@
 package com.example.prescription;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -9,11 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 
 public class PerfilDoctorActivity extends AppCompatActivity {
     public EditText nombre, apellido, telefono, nss, curp, fecha_nacimiento, domicilio, ciudad, colonia;
     public TextView codigo, cedula;
+    private ArrayList<String> informacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +24,34 @@ public class PerfilDoctorActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_perfil_doctor);
 
-        String nombre_parametro = "Juan";
-        String apellido_parametro = "Pérez";
-        long telefono_parametro = 9999999999L;
-        long nss_parametro = 99999999999L;
-        String curp_parametro = "OPDE129867RJCURXA9";
+        //Obtenemos informacion del intent
+        Intent intentInformacion = getIntent();
+        informacion = intentInformacion.getStringArrayListExtra("datos_doctor");
+
+
+        //String nombre_parametro = "Juan";
+        //String apellido_parametro = "Pérez";
+        //long telefono_parametro = 9999999999L;
+        //long nss_parametro = 99999999999L;
+        //String curp_parametro = "OPDE129867RJCURXA9";
+        //LocalDate fecha_nacimiento_parametro = LocalDate.of(1999, 1, 1);
+        //String domicilio_parametro = "Calle 1 numero #1";
+        //String colonia_parametro = "Colonia 1";
+        //String ciudad_parametro = "Ciudad";
+        //long codigo_parametro = 21212121212L;
+        //long cedula_parametro = 88888888L;
+
+        String nombre_parametro = informacion.get(1);
+        String apellido_parametro = informacion.get(2);
+        String telefono_parametro = informacion.get(3);
+        String nss_parametro = informacion.get(4);
+        String curp_parametro = informacion.get(5);
         LocalDate fecha_nacimiento_parametro = LocalDate.of(1999, 1, 1);
-        String domicilio_parametro = "Calle 1 numero #1";
-        String colonia_parametro = "Colonia 1";
-        String ciudad_parametro = "Ciudad";
-        long codigo_parametro = 21212121212L;
-        long cedula_parametro = 88888888L;
+        String domicilio_parametro = informacion.get(6);
+        String ciudad_parametro = informacion.get(7);
+        String colonia_parametro = informacion.get(8);
+        String cedula_parametro = informacion.get(9);
+        String codigo_parametro = informacion.get(0);
 
         codigo = findViewById(R.id.doctor_codigo);
         nombre = findViewById(R.id.doctor_nombre);

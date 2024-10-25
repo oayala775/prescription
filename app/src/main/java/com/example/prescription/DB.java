@@ -208,9 +208,9 @@ public class DB extends SQLiteOpenHelper {
 
         // Verificamos si hay resultados
         if (cursor.moveToFirst()) {
-            int numColums = cursor.getColumnCount();
+            int numColumns = cursor.getColumnCount();
 
-            for(int i = 0; i < numColums; i++){
+            for(int i = 0; i < numColumns; i++){
                 datos.add(cursor.getString(i));
             }
 
@@ -218,6 +218,26 @@ public class DB extends SQLiteOpenHelper {
         cursor.close();
         database.close();
 
+        return datos;
+    }
+
+    public ArrayList<String> obtenerDatosDoctor(String nombreUsuario){
+        ArrayList<String> datos = new ArrayList<>();
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        String query = "SELECT * FROM datos_doctores WHERE nombreUsuario = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{nombreUsuario});
+
+        //Verificamos si hay resultados
+        if(cursor.moveToFirst()){
+            int numColumns = cursor.getColumnCount();
+
+            for(int i = 0; i < numColumns; i++){
+                datos.add(cursor.getString(i));
+            }
+        }
+        cursor.close();
+        database.close();
         return datos;
     }
 }
