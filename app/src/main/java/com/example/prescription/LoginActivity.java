@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity{
                         startActivity(intent);
                     } else if(tuple.get(1).equals("paciente")){
                         Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
+                        intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userString));
                         startActivity(intent);
                     } else if(tuple.get(1).equals("farmacia")){
                         Intent intent = new Intent(LoginActivity.this, PerfilFarmaciaActivity.class);

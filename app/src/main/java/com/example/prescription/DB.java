@@ -199,4 +199,25 @@ public class DB extends SQLiteOpenHelper {
     }
 
 
+    public ArrayList<String> obtenerDatosPaciente(String nombreUsuario){
+        ArrayList<String> datos = new ArrayList<>();
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        String query = "SELECT * FROM datos_pacientes WHERE nombreUsuario = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{nombreUsuario});
+
+        // Verificamos si hay resultados
+        if (cursor.moveToFirst()) {
+            int numColums = cursor.getColumnCount();
+
+            for(int i = 0; i < numColums; i++){
+                datos.add(cursor.getString(i));
+            }
+
+        }
+        cursor.close();
+        database.close();
+
+        return datos;
+    }
 }
