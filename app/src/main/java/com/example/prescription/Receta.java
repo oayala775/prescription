@@ -1,32 +1,41 @@
 package com.example.prescription;
 
+import com.example.prescription.DB;
+
+import android.content.Context;
+import android.content.Intent;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class Receta {
 
     //Atributos
-    private String name = "Daniel";
-    private String idPatient = "17102024";
-    private String age = "21";
-    private String gender = "d";
-    private String stature = "1.80 m";
-    private String weight = "80 kg";
+    private String userName;
+    private String name;
+    private String idPatient;
+    private String age;
+    private String gender;
+    private String stature;
+    private String weight;
     private String diagnostic;
 
-    private String treatment = "paracetamol cada 8 horas";
+    private String treatment;
     private String date;
     private boolean status = false; // True -> Active, False -> Expired
-
+    private ArrayList<String> informacion;
 
 
 
     //Metodos
     public Receta(){};
 
-    public Receta(
-            String date,
-            String diagnostic
-    ){
-        this.date = date;
-        this.diagnostic = diagnostic;
+    public Receta(Context context, String userName){
+        //Obtenemos informacion del intent
+        DB db = new DB(context, null, null, 1);
+        informacion = db.obtenerDatosPaciente(userName);
+        this.name = informacion.get(1) + " " + informacion.get(2);
+        this.idPatient = informacion.get(0);
     }
 
 
@@ -62,6 +71,7 @@ public class Receta {
     }
     public String getTreatment(){ return this.treatment; }
     public boolean getStatus(){ return this.status; }
+
 
 
 }

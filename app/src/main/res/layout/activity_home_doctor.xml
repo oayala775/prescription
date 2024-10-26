@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingStart="30dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="30dp"
+    android:paddingBottom="30dp"
+    >
+
+
+    <!-- Es header-->
+    <LinearLayout
+        android:id="@+id/headerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/logo" />
+    </LinearLayout>
+
+
+
+    <!-- Nuevo Layout entre el header y el contentArea -->
+    <LinearLayout
+        android:id="@+id/middleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/contentArea">
+        <!-- Search bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/search_pill"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="10sp"
+                android:hint="Inserte nombre de usuario"
+                android:background="@drawable/search_pill"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/searchButton"
+                android:layout_width="35sp"
+                android:layout_height="50sp"
+                android:layout_marginHorizontal="10sp"
+                android:layout_weight="1"
+                android:contentDescription="Menu"
+                app:srcCompat="@drawable/search_logo" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+    <!-- Content Area -->
+    <LinearLayout
+        android:id="@+id/contentArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middleLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/colorBlock"
+                style="@style/card"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:contentDescription="Menu"
+                    app:srcCompat="@drawable/hamburguesanegra" />
+
+                <ImageView
+                    android:id="@+id/homeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:contentDescription="Home"
+                    app:srcCompat="@drawable/home" />
+
+                <ImageView
+                    android:id="@+id/perfilButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:contentDescription="Perfil"
+                    app:srcCompat="@drawable/usuario" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

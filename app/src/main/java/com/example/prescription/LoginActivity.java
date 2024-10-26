@@ -45,11 +45,11 @@ public class LoginActivity extends AppCompatActivity{
                 tuple = db.contrasenaExistente(userString);
                 if(passwordString.equals(tuple.get(0))){
                     if(tuple.get(1).equals("doctor")){
-                        Intent intent = new Intent(LoginActivity.this, PerfilDoctorActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeDoctorActivity.class);
                         intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userString));
                         startActivity(intent);
                     } else if(tuple.get(1).equals("paciente")){
-                        Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeUserActivity.class);
                         intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userString));
                         startActivity(intent);
                     } else if(tuple.get(1).equals("farmacia")){

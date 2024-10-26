@@ -54,6 +54,8 @@
         <!-- Queremos que carge la descripcion de la receta del usuario -->
         <activity android:name=".RecipeDetailsActivity" />
 
+        <!-- Queremos que carge la descripcion de la receta del usuario -->
+        <activity android:name=".HomeDoctorActivity" />
 
     </application>
 
