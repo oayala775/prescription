@@ -2,6 +2,7 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 
@@ -34,13 +35,26 @@ public class HomeUserActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_usuario);
 
+        //Log.d("HomeUserActivity", "OnCreate Creado: ");
+
         Intent intentInformacion = getIntent();
         informacion = intentInformacion.getStringArrayListExtra("datos_paciente");
+
         userName = informacion.get(9);
 
+        Log.d("HomeUserActivity", "informacion: " + informacion);
+        //nombre, edad, estatura, peso, diagnostico, tratamiento, idPaciente
+
+
         //Se agregan recetas de prueba
-        Receta receta = new Receta(this, userName);
-        inventarioRecetas.add(receta);
+        //Receta receta = new Receta(this, userName);
+        //inventarioRecetas.add(receta);
+
+        DB db = new DB(getApplicationContext(), null, null, 1);
+        this.inventarioRecetas = new ArrayList<>(db.obtenerRecetasPaciente("1"));
+
+
+
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -48,7 +62,7 @@ public class HomeUserActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
 
-        DB db = new DB(getApplicationContext(), null, null, 1);
+
 
         // Buttons
         ImageView homeButton = findViewById(R.id.homeButton);

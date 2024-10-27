@@ -36,6 +36,25 @@ public class Receta {
         informacion = db.obtenerDatosPaciente(userName);
         this.name = informacion.get(1) + " " + informacion.get(2);
         this.idPatient = Integer.parseInt(informacion.get(0));
+        //        db.execSQL("CREATE TABLE recetas(id_receta INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, estatura TEXT, peso TEXT, diagnostico TEXT, tratamiento TEXT, id_paciente INTEGER, FOREIGN KEY (id_paciente) REFERENCES datos_pacientes(id))");
+    }
+
+    public Receta(
+            String nombre,
+            String edad,
+            String estatura,
+            String peso,
+            String diagnostico,
+            String tratamiento,
+            String idPaciente
+    ){
+        this.name = nombre;
+        this.age = edad;
+        this.stature = estatura;
+        this.weight = peso;
+        this.diagnostic = diagnostico;
+        this.treatment = tratamiento;
+        this.idPatient = Integer.parseInt(idPaciente);
     }
 
 
