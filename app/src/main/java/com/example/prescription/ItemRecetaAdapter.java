@@ -45,10 +45,12 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Log.d("ItemRecetaAdapter", "Position: " + position + " - " + data.get(position).getDate() + " " + data.get(position).getDiagnostic());
 
-        holder.diagnostic.setText(data.get(position).getDate() + " " + data.get(position).getDiagnostic());
+        //holder.diagnostic.setText(data.get(position).getDate() + " " + data.get(position).getDiagnostic());
+        holder.diagnostic.setText(data.get(position).getDiagnostic());
+
 
         // Click Methods
         holder.sig.setOnClickListener(new View.OnClickListener() {
@@ -58,38 +60,20 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
 
                 ArrayList<String> details_recipe = new ArrayList<>();
 
-                /*
-                * name
-                * id
-                * day
-                * month
-                * year
-                * age
-                * height
-                * weight
-                * Diagnostic
-                * Treatment
-                * status
-                * */
+                //nombre, edad, estatura, peso, diagnostico, tratamiento, idPaciente
 
                 details_recipe.add(data.get(position).getName());
-                details_recipe.add(data.get(position).getIdPatient().toString());
+                //details_recipe.add(data.get(position).getIdPatient().toString());
 
-                String[] date = data.get(position).getDate().split("-");
-                Collections.addAll(details_recipe, date);
+                //String[] date = data.get(position).getDate().split("-");
+                //Collections.addAll(details_recipe, date);
 
                 details_recipe.add(data.get(position).getAge());
                 details_recipe.add(data.get(position).getStature());
                 details_recipe.add(data.get(position).getWeight());
                 details_recipe.add(data.get(position).getDiagnostic());
                 details_recipe.add(data.get(position).getTreatment());
-
-                if(data.get(position).getStatus()){
-                    details_recipe.add("Active");
-                }
-                else{
-                    details_recipe.add("Expired");
-                }
+                details_recipe.add("Active");
 
 
 

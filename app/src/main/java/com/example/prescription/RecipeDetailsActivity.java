@@ -41,27 +41,27 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         status = (TextView) findViewById(R.id.status);
 
         // Details recipe
-//        Intent intent = getIntent();
-//
-//        // ArrayList
-//        ArrayList<String> detailsRecipe = intent.getStringArrayListExtra("description_recipe");
-//
-//        fullName.setText(detailsRecipe.get(0));
-//        id.setText(detailsRecipe.get(1));
-//        day.setText(detailsRecipe.get(2));
-//        month.setText(detailsRecipe.get(3));
-//        year.setText(detailsRecipe.get(4));
-//        age.setText(detailsRecipe.get(5));
-//        height.setText(detailsRecipe.get(6));
-//        weight.setText(detailsRecipe.get(7));
-//        diagnostic.setText(detailsRecipe.get(8));
-//        treatment.setText(detailsRecipe.get(9));
-//
-//        if(detailsRecipe.get(10).equals("Expired")){
-//            status.setVisibility(View.VISIBLE);
-//        }
-//        else{
-//            status.setVisibility(View.GONE);
-//        }
+        Intent intent = getIntent();
+
+        // ArrayList
+        ArrayList<String> detailsRecipe = intent.getStringArrayListExtra("description_recipe");
+
+        fullName.setText(detailsRecipe.get(0));
+        //id.setText(detailsRecipe.get(6));
+        //day.setText(detailsRecipe.get(2));
+        //month.setText(detailsRecipe.get(3));
+        //year.setText(detailsRecipe.get(4));
+        age.setText(detailsRecipe.get(1));
+        height.setText(detailsRecipe.get(2));
+        weight.setText(detailsRecipe.get(3));
+        diagnostic.setText(detailsRecipe.get(4));
+        treatment.setText(detailsRecipe.get(5));
+
+        if(detailsRecipe.get(6).equals("Expired")){
+            status.setVisibility(View.VISIBLE);
+        }
+        else{
+            status.setVisibility(View.GONE);
+        }
     }
 }

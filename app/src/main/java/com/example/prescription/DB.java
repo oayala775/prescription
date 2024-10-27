@@ -1,11 +1,13 @@
 package com.example.prescription;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,6 +28,13 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE datos_pacientes(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
         db.execSQL("CREATE TABLE datos_farmacia(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, telefono TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
         db.execSQL("CREATE TABLE recetas(id_receta INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, estatura TEXT, peso TEXT, diagnostico TEXT, tratamiento TEXT, id_paciente INTEGER, FOREIGN KEY (id_paciente) REFERENCES datos_pacientes(id))");
+
+        // Agregar un paciente predefinido
+        db.execSQL("INSERT INTO datos_pacientes (nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena, rol)" +
+                "VALUES ('paciente', 'paciente', '5551234567', '1234567890', 'JUAP', 'Guadalajara', 'Guadalajara', 'Centro', 'paciente', '12345', 'paciente')");
+
+        db.execSQL("INSERT INTO recetas (nombre, edad, estatura, peso, diagnostico, tratamiento, id_paciente) VALUES ('Receta Inicial', '30', '175', '70', 'Diagnóstico de prueba', 'Tratamiento de prueba', 1)");
+
     }
 
     @Override
@@ -316,5 +325,41 @@ public class DB extends SQLiteOpenHelper {
         return datos;
     }
 
+    public ArrayList<Receta> obtenerRecetasPaciente(String idPaciente){
+        ArrayList<Receta> datos = new ArrayList<>();
 
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        String query = "SELECT * FROM recetas WHERE id_paciente = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{idPaciente});
+
+
+
+        if(cursor != null){
+            try{
+                cursor.moveToFirst();
+                do {
+                    //@SuppressLint("Range") int idReceta = cursor.getInt(cursor.getColumnIndex("id_receta"));
+                    @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("nombre"));
+                    @SuppressLint("Range") String edad = cursor.getString(cursor.getColumnIndex("edad"));
+                    @SuppressLint("Range") String estatura = cursor.getString(cursor.getColumnIndex("estatura"));
+                    @SuppressLint("Range") String peso = cursor.getString(cursor.getColumnIndex("peso"));
+                    @SuppressLint("Range") String diagnostico = cursor.getString(cursor.getColumnIndex("diagnostico"));
+                    @SuppressLint("Range") String tratamiento = cursor.getString(cursor.getColumnIndex("tratamiento"));
+
+                    // Crea un objeto Receta (asegúrate de tener la clase Receta definida)
+                    Receta receta = new Receta(nombre, edad, estatura, peso, diagnostico, tratamiento, idPaciente);
+                    datos.add(receta);
+                } while (cursor.moveToNext());
+            }
+            catch (Exception e){
+                Log.e("DB", "Error al obtener recetas: ", e);
+            }
+            finally {
+                cursor.close();
+            }
+        }
+        database.close();
+        return datos;
+    }
 }
