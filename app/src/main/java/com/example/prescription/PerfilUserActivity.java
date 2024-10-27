@@ -67,10 +67,21 @@ public class PerfilUserActivity extends AppCompatActivity {
         ciudad.setText(ciudad_parametro);
 
 
+        DB db = new DB(getApplicationContext(), null, null, 1);
+        String userName = informacion.get(9);
+
         // Buttons
-        HomeButton = findViewById(R.id.homeButton);
-        HomeButton.setOnClickListener(v -> {
+        ImageView homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(v -> {
             Intent intent = new Intent(PerfilUserActivity.this, HomeUserActivity.class);
+            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
+            startActivity(intent);
+        });
+
+        ImageView perfilButton = findViewById(R.id.perfilButton);
+        perfilButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilUserActivity.this, PerfilUserActivity.class);
+            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
             startActivity(intent);
         });
 

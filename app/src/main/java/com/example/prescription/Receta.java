@@ -13,7 +13,7 @@ public class Receta {
     //Atributos
     private String userName;
     private String name;
-    private String idPatient;
+    private Integer idPatient;
     private String age;
     private String gender;
     private String stature;
@@ -35,13 +35,13 @@ public class Receta {
         DB db = new DB(context, null, null, 1);
         informacion = db.obtenerDatosPaciente(userName);
         this.name = informacion.get(1) + " " + informacion.get(2);
-        this.idPatient = informacion.get(0);
+        this.idPatient = Integer.parseInt(informacion.get(0));
     }
 
 
     //Setters
     public void setName(String n){ this.name = n;}
-    public void setIdPatient(String id){ this.idPatient = id;}
+    public void setIdPatient(Integer id){ this.idPatient = id;}
     public void setAge(String age){ this.age = age; }
     public void setGender(String g) { this.gender = g; }
     public void setStature(String s){ this.stature = s; }
@@ -58,7 +58,7 @@ public class Receta {
 
     //Getters
     public String getName() { return this.name; }
-    public String getIdPatient(){ return this.idPatient; }
+    public Integer getIdPatient(){ return this.idPatient; }
     public String getAge(){ return this.age; }
     public String getGender(){ return this.gender; }
     public String getStature(){ return this.stature; }

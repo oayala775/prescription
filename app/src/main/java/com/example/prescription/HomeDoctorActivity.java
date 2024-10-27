@@ -42,6 +42,9 @@ public class HomeDoctorActivity extends AppCompatActivity {
                 ArrayList<String> info = db.obtenerDatosPaciente(searchText);
                 if (!info.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Usuario " + searchText + " encontrado", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(HomeDoctorActivity.this, CreateRecipeActivity.class);
+                    intent.putStringArrayListExtra("datos_paciente", info);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
                     searchPill.setText("");

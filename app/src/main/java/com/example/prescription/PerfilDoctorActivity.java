@@ -3,6 +3,7 @@ package com.example.prescription;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -77,6 +78,24 @@ public class PerfilDoctorActivity extends AppCompatActivity {
         colonia.setText(colonia_parametro);
         ciudad.setText(ciudad_parametro);
         cedula.setText(String.valueOf(cedula_parametro));
+
+        DB db = new DB(getApplicationContext(), null, null, 1);
+        String userName = informacion.get(9);
+
+        // Buttons
+        ImageView homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilDoctorActivity.this, HomeDoctorActivity.class);
+            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
+            startActivity(intent);
+        });
+
+        ImageView perfilButton = findViewById(R.id.perfilButton);
+        perfilButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilDoctorActivity.this, PerfilDoctorActivity.class);
+            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
+            startActivity(intent);
+        });
 
     }
 }

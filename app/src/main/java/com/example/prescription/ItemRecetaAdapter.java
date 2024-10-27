@@ -73,7 +73,7 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
                 * */
 
                 details_recipe.add(data.get(position).getName());
-                details_recipe.add(data.get(position).getIdPatient());
+                details_recipe.add(data.get(position).getIdPatient().toString());
 
                 String[] date = data.get(position).getDate().split("-");
                 Collections.addAll(details_recipe, date);

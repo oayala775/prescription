@@ -218,7 +218,6 @@
         </ScrollView>
 
     </LinearLayout>
-
     <!-- Content Area -->
     <LinearLayout
         android:id="@+id/contentArea"
@@ -272,6 +271,7 @@
                     app:srcCompat="@drawable/usuario" />
 
             </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

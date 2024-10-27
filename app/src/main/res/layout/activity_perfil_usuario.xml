@@ -354,7 +354,7 @@
                     app:srcCompat="@drawable/home" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/perfilButton"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"

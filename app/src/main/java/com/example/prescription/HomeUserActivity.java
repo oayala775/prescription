@@ -50,15 +50,20 @@ public class HomeUserActivity extends AppCompatActivity {
 
         DB db = new DB(getApplicationContext(), null, null, 1);
 
-
         // Buttons
-        PerfilButton = findViewById(R.id.perfilButton);
-        PerfilButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
+        ImageView homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
             intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
             startActivity(intent);
         });
 
+        ImageView perfilButton = findViewById(R.id.perfilButton);
+        perfilButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
+            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
+            startActivity(intent);
+        });
 
     }
 

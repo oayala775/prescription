@@ -25,6 +25,7 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE datos_doctores(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, cedula TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
         db.execSQL("CREATE TABLE datos_pacientes(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
         db.execSQL("CREATE TABLE datos_farmacia(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, telefono TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
+        db.execSQL("CREATE TABLE recetas(id_receta INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, estatura TEXT, peso TEXT, diagnostico TEXT, tratamiento TEXT, id_paciente INTEGER, FOREIGN KEY (id_paciente) REFERENCES datos_pacientes(id))");
     }
 
     @Override
@@ -123,6 +124,40 @@ public class DB extends SQLiteOpenHelper {
         return mensaje;
     }
 
+    // Guardar recetas
+    public String guardar(String nombre, int id_paciente, String edad, String estatura, String peso, String diagnostico, String tratamiento){
+        String mensaje = "";
+
+        //permisos de escritura a la base
+        SQLiteDatabase database;
+        ContentValues contenedor;
+
+        if (usuarioExistente(id_paciente)){
+            database = this.getWritableDatabase();
+            contenedor = new ContentValues();
+            contenedor.put("nombre",nombre);
+            contenedor.put("edad",edad);
+            contenedor.put("estatura",estatura);
+            contenedor.put("peso",peso);
+            contenedor.put("diagnostico",diagnostico);
+            contenedor.put("tratamiento",tratamiento);
+            contenedor.put("id_paciente",id_paciente);
+            //corroborar que se ingreso o no a la base de datos
+            try{
+                database.insertOrThrow("recetas", null, contenedor);
+                mensaje = "Receta correctamente creada";
+            }
+            catch(SQLException e){mensaje = "No se pudo crear la receta: " + e.getMessage();}
+            database.close();
+            return mensaje;
+        } else {
+            mensaje = "No se encontró el paciente";
+            return mensaje;
+        }
+
+
+    }
+
     public Boolean validarUsuario(String nombreUsuario) {
         int count = 0;
 
@@ -149,8 +184,9 @@ public class DB extends SQLiteOpenHelper {
         return count == 0;
     }
 
+
+
     public Boolean usuarioExistente(String nombreUsuario){
-        ArrayList<String> tuple = new ArrayList<>(2);
         SQLiteDatabase database = this.getReadableDatabase();
 
         //hacer una consulta en varias tablas
@@ -170,7 +206,26 @@ public class DB extends SQLiteOpenHelper {
             database.close();
             return false; // Login failed
         }
+    }
 
+    public Boolean usuarioExistente(int id){
+        Integer idParse = (Integer) id;
+        String idString = idParse.toString();
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        //hacer una consulta en varias tablas
+        String query = String.format("SELECT id FROM datos_pacientes WHERE id = ? ");
+
+        Cursor cursor = database.rawQuery(query, new String[]{idString});
+
+        if (cursor.moveToFirst()) {
+            database.close();   // Successful login
+            return true;
+        } else {
+            cursor.close();
+            database.close();
+            return false; // Login failed
+        }
     }
 
     public ArrayList<String> contrasenaExistente(String nombreUsuario){
@@ -260,4 +315,6 @@ public class DB extends SQLiteOpenHelper {
         database.close();
         return datos;
     }
+
+
 }
