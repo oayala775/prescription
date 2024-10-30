@@ -24,8 +24,8 @@ public class DB extends SQLiteOpenHelper {
     //Creamos una tablas en la base de datos
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE datos_doctores(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, cedula TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
-        db.execSQL("CREATE TABLE datos_pacientes(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
+        db.execSQL("CREATE TABLE datos_doctores(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, cedula TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT, dia TEXT, mes TEXT, anio Text)");
+        db.execSQL("CREATE TABLE datos_pacientes(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT, dia TEXT, mes TEXT, anio Text)");
         db.execSQL("CREATE TABLE datos_farmacia(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, telefono TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
         db.execSQL("CREATE TABLE recetas(id_receta INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, estatura TEXT, peso TEXT, diagnostico TEXT, tratamiento TEXT, id_paciente INTEGER, FOREIGN KEY (id_paciente) REFERENCES datos_pacientes(id))");
 
@@ -41,7 +41,7 @@ public class DB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
     //metodo guardar(doctor) registro
-    public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String cedula, String nombreUsuario, String contrasena){
+    public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String cedula, String nombreUsuario, String contrasena, String dia, String mes, String anio){
         String mensaje = "";
 
         //permisos de escritura a la base
@@ -53,7 +53,6 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("telefono", telefono);
         contenedor.put("nss", nss);
         contenedor.put("curp", curp);
-        //contenedor.put("fechaNacimiento", fechaNacimiento);
         contenedor.put("domicilio", domicilio);
         contenedor.put("ciudad", ciudad);
         contenedor.put("colonia",colonia);
@@ -61,6 +60,9 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("contrasena", contrasena);
         contenedor.put("rol", "doctor");
         contenedor.put("cedula", cedula);
+        contenedor.put("dia", dia);
+        contenedor.put("mes", mes);
+        contenedor.put("anio", anio);
 
         //corroborar que se ingreso o no a la base de datos
         try{
@@ -78,7 +80,7 @@ public class DB extends SQLiteOpenHelper {
 //    }
 
     //metodo guardar(paciente) registro
-    public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String nombreUsuario, String contrasena){
+    public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String nombreUsuario, String contrasena,  String dia, String mes, String anio){
         String mensaje = "";
 
         //permisos de escritura a la base
@@ -90,13 +92,15 @@ public class DB extends SQLiteOpenHelper {
         contenedor.put("telefono", telefono);
         contenedor.put("nss", nss);
         contenedor.put("curp", curp);
-        //contenedor.put("fechaNacimiento", fechaNacimiento);
         contenedor.put("domicilio", domicilio);
         contenedor.put("ciudad", ciudad);
         contenedor.put("colonia",colonia);
         contenedor.put("nombreUsuario",nombreUsuario);
         contenedor.put("contrasena", contrasena);
         contenedor.put("rol", "paciente");
+        contenedor.put("dia", dia);
+        contenedor.put("mes", mes);
+        contenedor.put("anio", anio);
 
 
         //corroborar que se ingreso o no a la base de datos
