@@ -61,14 +61,14 @@ public class HomeDoctorActivity extends AppCompatActivity {
         ImageView homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeDoctorActivity.this, HomeDoctorActivity.class);
-            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
+            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
             startActivity(intent);
         });
 
         ImageView perfilButton = findViewById(R.id.perfilButton);
         perfilButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeDoctorActivity.this, PerfilUserActivity.class);
-            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
+            Intent intent = new Intent(HomeDoctorActivity.this, PerfilDoctorActivity.class);
+            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
             startActivity(intent);
         });
 

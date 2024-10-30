@@ -213,6 +213,17 @@
                     android:paddingStart="15dp"
                     tools:ignore="RtlSymmetry" />
 
+                <Button
+                    android:id="@+id/buttonEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20sp"
+                    android:backgroundTint="@color/white"
+                    android:text="Editar"
+                    android:textColor="@color/blue_card"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
         </ScrollView>

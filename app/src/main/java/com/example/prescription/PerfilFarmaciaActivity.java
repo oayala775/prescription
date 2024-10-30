@@ -2,9 +2,11 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,6 +64,19 @@ public class PerfilFarmaciaActivity extends AppCompatActivity {
         DB db = new DB(getApplicationContext(), null, null, 1);
         String userName = informacion.get(9);
 
+        codigo.setEnabled(false);
+        nombre.setEnabled(false);
+        telefono.setEnabled(false);
+        domicilio.setEnabled(false);
+        colonia.setEnabled(false);
+        ciudad.setEnabled(false);
+
+        Button editButton = findViewById(R.id.buttonEdit);
+        editButton.setOnClickListener(v->{
+            edit(telefono,domicilio,colonia,ciudad,editButton);
+        });
+
+
         // Buttons
         ImageView exitButton = findViewById(R.id.exitButton);
         exitButton.setOnClickListener(v -> {
@@ -82,5 +97,22 @@ public class PerfilFarmaciaActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    private void edit(EditText telefono, EditText domicilio, EditText colonia, EditText ciudad, Button editButton){
+        if (editButton.getText().toString().equals("Editar")){
+            editButton.setText("Guardar");
+            telefono.setEnabled(true);
+            domicilio.setEnabled(true);
+            colonia.setEnabled(true);
+            ciudad.setEnabled(true);
+        } else if(editButton.getText().toString().equals("Guardar")){
+            editButton.setText("Editar");
+            telefono.setEnabled(false);
+            domicilio.setEnabled(false);
+            colonia.setEnabled(false);
+            ciudad.setEnabled(false);
+            Toast.makeText(getApplicationContext(),"Editado correctamente", Toast.LENGTH_SHORT).show();
+        }
     }
 }

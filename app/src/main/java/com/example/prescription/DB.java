@@ -72,6 +72,11 @@ public class DB extends SQLiteOpenHelper {
         return mensaje;
     }
 
+//    public String actualizar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String cedula, String nombreUsuario){
+//
+//
+//    }
+
     //metodo guardar(paciente) registro
     public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String nombreUsuario, String contrasena){
         String mensaje = "";
