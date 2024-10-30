@@ -86,15 +86,6 @@
                 app:layout_constraintVertical_bias="0.495">
 
                 <TextView
-                    android:id="@+id/doctor_codigo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Codigo"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-
-                <TextView
                     android:id="@+id/doctor_nombre_texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -222,17 +213,51 @@
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/doctor_nacimiento"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background2"
-                    android:ems="10"
-                    android:hint="dd/mm/yyyy"
-                    android:inputType="date"
-                    android:paddingStart="15dp"
-                    tools:ignore="RtlSymmetry" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textAlignment="center">
+
+                    <EditText
+                        android:id="@+id/doctor_day"
+                        android:layout_width="60dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_edittext_background2"
+                        android:ems="10"
+                        android:hint="Dia"
+                        android:inputType="text"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/doctor_month"
+                        android:layout_width="60dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_edittext_background2"
+                        android:ems="10"
+                        android:hint="Mes"
+                        android:inputType="text"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/doctor_year"
+                        android:layout_width="60dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_edittext_background2"
+                        android:ems="10"
+                        android:hint="Año"
+                        android:inputType="text"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/doctor_domicilio_texto"

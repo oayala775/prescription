@@ -86,15 +86,6 @@
                 app:layout_constraintVertical_bias="0.495">
 
                 <TextView
-                    android:id="@+id/farmacia_codigo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Codigo"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-
-                <TextView
                     android:id="@+id/farmacia_nombre_texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

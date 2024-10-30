@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 
 public class PerfilDoctorActivity extends AppCompatActivity {
-    public EditText nombre, apellido, telefono, nss, curp, fecha_nacimiento, domicilio, ciudad, colonia;
-    public TextView codigo, cedula;
+    public EditText nombre, apellido, telefono, nss, curp, fecha_nacimiento, domicilio, ciudad, colonia, dia, mes, anio;
+    public TextView cedula;
     private ArrayList<String> informacion;
 
     @Override
@@ -31,67 +31,57 @@ public class PerfilDoctorActivity extends AppCompatActivity {
         Intent intentInformacion = getIntent();
         informacion = intentInformacion.getStringArrayListExtra("datos_doctor");
 
-
-        //String nombre_parametro = "Juan";
-        //String apellido_parametro = "Pérez";
-        //long telefono_parametro = 9999999999L;
-        //long nss_parametro = 99999999999L;
-        //String curp_parametro = "OPDE129867RJCURXA9";
-        //LocalDate fecha_nacimiento_parametro = LocalDate.of(1999, 1, 1);
-        //String domicilio_parametro = "Calle 1 numero #1";
-        //String colonia_parametro = "Colonia 1";
-        //String ciudad_parametro = "Ciudad";
-        //long codigo_parametro = 21212121212L;
-        //long cedula_parametro = 88888888L;
-
         String nombre_parametro = informacion.get(1);
         String apellido_parametro = informacion.get(2);
         String telefono_parametro = informacion.get(3);
         String nss_parametro = informacion.get(4);
         String curp_parametro = informacion.get(5);
-        LocalDate fecha_nacimiento_parametro = LocalDate.of(1999, 1, 1);
         String domicilio_parametro = informacion.get(6);
         String ciudad_parametro = informacion.get(7);
         String colonia_parametro = informacion.get(8);
         String cedula_parametro = informacion.get(9);
-        String codigo_parametro = informacion.get(0);
+        String dia_parametro = informacion.get(13);
+        String mes_parametro = informacion.get(14);
+        String anio_parametro = informacion.get(15);
 
-        codigo = findViewById(R.id.doctor_codigo);
         nombre = findViewById(R.id.doctor_nombre);
         apellido = findViewById(R.id.doctor_apellido);
         telefono = findViewById(R.id.doctor_telefono);
         nss = findViewById(R.id.doctor_nss);
         curp = findViewById(R.id.doctor_curp);
-        fecha_nacimiento = findViewById(R.id.doctor_nacimiento);
         domicilio = findViewById(R.id.doctor_domicilio);
         colonia = findViewById(R.id.doctor_colonia);
         ciudad = findViewById(R.id.doctor_ciudad);
         cedula = findViewById(R.id.doctor_cedula);
+        dia = findViewById(R.id.doctor_day);
+        mes = findViewById(R.id.doctor_month);
+        anio = findViewById(R.id.doctor_year);
 
-        codigo.setText(String.valueOf(codigo_parametro));
         nombre.setText(nombre_parametro);
         apellido.setText(apellido_parametro);
         telefono.setText(String.valueOf(telefono_parametro));
         nss.setText(String.valueOf(nss_parametro));
         curp.setText(curp_parametro);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        fecha_nacimiento.setText(fecha_nacimiento_parametro.format(formatter));
         domicilio.setText(domicilio_parametro);
         colonia.setText(colonia_parametro);
         ciudad.setText(ciudad_parametro);
         cedula.setText(String.valueOf(cedula_parametro));
+        dia.setText(dia_parametro);
+        mes.setText(mes_parametro);
+        anio.setText(anio_parametro);
 
-        codigo.setEnabled(false);
         nombre.setEnabled(false);
         apellido.setEnabled(false);
         telefono.setEnabled(false);
         nss.setEnabled(false);
         curp.setEnabled(false);
-        fecha_nacimiento.setEnabled(false);
         domicilio.setEnabled(false);
         colonia.setEnabled(false);
         ciudad.setEnabled(false);
         cedula.setEnabled(false);
+        dia.setEnabled(false);
+        mes.setEnabled(false);
+        anio.setEnabled(false);
 
         DB db = new DB(getApplicationContext(), null, null, 1);
         String userName = informacion.get(9);
