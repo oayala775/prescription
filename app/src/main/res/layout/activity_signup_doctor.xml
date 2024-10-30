@@ -33,296 +33,6 @@
                 android:layout_marginStart="15dp"
                 app:srcCompat="@drawable/logo" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="25dp"
-                app:layout_constraintBottom_toBottomOf="@+id/colorBlock"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/colorBlock"
-                app:layout_constraintVertical_bias="0.495">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Sign up"
-                    android:textColor="#FFFFFF"
-                    android:textSize="40sp" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:text="Doctor"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/text_datos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:text="Datos personales"
-                    android:textColor="#d9d9d9"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/doctor_nombre"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Nombre"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_apellido"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Apellido(s)"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_telefono"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Número de teléfono"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_nss"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="NSS"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_curp"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="CURP"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_cedula"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Cédula profesional"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <TextView
-                    android:id="@+id/doctor_fechaNacimiento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:text="Fecha de nacimiento"
-                    android:textColor="#d9d9d9"
-                    android:textSize="20dp" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:textAlignment="center">
-
-                    <EditText
-                        android:id="@+id/doctor_day"
-                        android:layout_width="60dp"
-                        android:layout_height="48dp"
-                        android:layout_marginVertical="10dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/rounded_edittext_background"
-                        android:ems="10"
-                        android:hint="Dia"
-                        android:inputType="text"
-                        android:textAlignment="center" />
-
-                    <EditText
-                        android:id="@+id/doctor_month"
-                        android:layout_width="60dp"
-                        android:layout_height="48dp"
-                        android:layout_marginVertical="10dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/rounded_edittext_background"
-                        android:ems="10"
-                        android:hint="Mes"
-                        android:inputType="text"
-                        android:textAlignment="center" />
-
-                    <EditText
-                        android:id="@+id/doctor_year"
-                        android:layout_width="60dp"
-                        android:layout_height="48dp"
-                        android:layout_marginVertical="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/rounded_edittext_background"
-                        android:ems="10"
-                        android:hint="Año"
-                        android:inputType="text"
-                        android:textAlignment="center" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/text_domicilio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:text="Domicilio"
-                    android:textColor="#d9d9d9"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/doctor_domicilio"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Domicilio (calle y número)"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_colonia"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Colonia"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_ciudad"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Ciudad"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <TextView
-                    android:id="@+id/text_pass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:text="Usuario"
-                    android:textColor="#d9d9d9"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/doctor_nombre_usuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Nombre usuario"
-                    android:inputType="text"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Contraseña"
-                    android:inputType="textPassword"
-                    android:paddingStart="15dp" />
-
-                <EditText
-                    android:id="@+id/doctor_confirm_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/rounded_edittext_background"
-                    android:ems="10"
-                    android:hint="Confirmar contraseña"
-                    android:inputType="textPassword"
-                    android:paddingStart="15dp" />
-
-
-                <TextView
-                    android:id="@+id/doctor_foto_perfil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:text="Subir foto de perfil"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-
-                    <Button
-                        android:id="@+id/doctor_guardar"
-                        style="@style/link_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:gravity="center"
-                        android:onClick="goToLogin"
-                        android:text="Registar"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
         </LinearLayout>
         <!-- Es formulario-->
 
@@ -348,6 +58,296 @@
                     >
 
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="25dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/colorBlock"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/colorBlock"
+                        app:layout_constraintVertical_bias="0.495">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Sign up"
+                            android:textColor="#FFFFFF"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Doctor"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/text_datos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Datos personales"
+                            android:textColor="#d9d9d9"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_nombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Nombre"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_apellido"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Apellido(s)"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_telefono"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Número de teléfono"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_nss"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="NSS"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_curp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="CURP"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_cedula"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Cédula profesional"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <TextView
+                            android:id="@+id/doctor_fechaNacimiento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Fecha de nacimiento"
+                            android:textColor="#d9d9d9"
+                            android:textSize="20dp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:textAlignment="center">
+
+                            <EditText
+                                android:id="@+id/doctor_day"
+                                android:layout_width="60dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_edittext_background"
+                                android:ems="10"
+                                android:hint="Dia"
+                                android:inputType="text"
+                                android:textAlignment="center" />
+
+                            <EditText
+                                android:id="@+id/doctor_month"
+                                android:layout_width="60dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_edittext_background"
+                                android:ems="10"
+                                android:hint="Mes"
+                                android:inputType="text"
+                                android:textAlignment="center" />
+
+                            <EditText
+                                android:id="@+id/doctor_year"
+                                android:layout_width="60dp"
+                                android:layout_height="48dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/rounded_edittext_background"
+                                android:ems="10"
+                                android:hint="Año"
+                                android:inputType="text"
+                                android:textAlignment="center" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/text_domicilio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Domicilio"
+                            android:textColor="#d9d9d9"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_domicilio"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Domicilio (calle y número)"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_colonia"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Colonia"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_ciudad"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Ciudad"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <TextView
+                            android:id="@+id/text_pass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Usuario"
+                            android:textColor="#d9d9d9"
+                            android:textSize="20dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_nombre_usuario"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Nombre usuario"
+                            android:inputType="text"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Contraseña"
+                            android:inputType="textPassword"
+                            android:paddingStart="15dp" />
+
+                        <EditText
+                            android:id="@+id/doctor_confirm_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/rounded_edittext_background"
+                            android:ems="10"
+                            android:hint="Confirmar contraseña"
+                            android:inputType="textPassword"
+                            android:paddingStart="15dp" />
+
+
+                        <TextView
+                            android:id="@+id/doctor_foto_perfil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Subir foto de perfil"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <Button
+                                android:id="@+id/doctor_guardar"
+                                style="@style/link_button"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:onClick="goToLogin"
+                                android:text="Registar"
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
                 </ScrollView>
             </LinearLayout>
 
