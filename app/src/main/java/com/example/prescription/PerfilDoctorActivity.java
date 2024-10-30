@@ -83,6 +83,11 @@ public class PerfilDoctorActivity extends AppCompatActivity {
         String userName = informacion.get(9);
 
         // Buttons
+        ImageView exitButton = findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilDoctorActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
         ImageView homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(v -> {
             Intent intent = new Intent(PerfilDoctorActivity.this, HomeDoctorActivity.class);

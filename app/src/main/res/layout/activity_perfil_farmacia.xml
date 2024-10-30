@@ -248,11 +248,11 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/exitButton"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/hamburguesanegra" />
+                    app:srcCompat="@drawable/exit" />
 
                 <ImageView
                     android:id="@+id/homeButton"
@@ -263,7 +263,7 @@
                     app:srcCompat="@drawable/home" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/perfilButton"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"

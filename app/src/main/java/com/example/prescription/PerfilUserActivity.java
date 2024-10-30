@@ -71,17 +71,22 @@ public class PerfilUserActivity extends AppCompatActivity {
         String userName = informacion.get(9);
 
         // Buttons
+        ImageView exitButton = findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilUserActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
         ImageView homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PerfilUserActivity.this, HomeUserActivity.class);
-            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
+            Intent intent = new Intent(PerfilUserActivity.this, HomeDoctorActivity.class);
+            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
             startActivity(intent);
         });
 
         ImageView perfilButton = findViewById(R.id.perfilButton);
         perfilButton.setOnClickListener(v -> {
             Intent intent = new Intent(PerfilUserActivity.this, PerfilUserActivity.class);
-            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
+            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
             startActivity(intent);
         });
 

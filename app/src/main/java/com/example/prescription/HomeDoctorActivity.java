@@ -15,7 +15,6 @@ public class HomeDoctorActivity extends AppCompatActivity {
     private ImageView search;
     private EditText searchPill;
     private String searchText;
-    private ImageView perfilButton;
     private ArrayList<String> informacion;
     private String userName;
     @Override
@@ -53,11 +52,23 @@ public class HomeDoctorActivity extends AppCompatActivity {
         });
 
 
-        // Navbar
-        perfilButton = findViewById(R.id.perfilButton);
+        // Buttons
+        ImageView exitButton = findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeDoctorActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
+        ImageView homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeDoctorActivity.this, HomeDoctorActivity.class);
+            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
+            startActivity(intent);
+        });
+
+        ImageView perfilButton = findViewById(R.id.perfilButton);
         perfilButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeDoctorActivity.this, PerfilDoctorActivity.class);
-            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
+            Intent intent = new Intent(HomeDoctorActivity.this, PerfilUserActivity.class);
+            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
             startActivity(intent);
         });
 

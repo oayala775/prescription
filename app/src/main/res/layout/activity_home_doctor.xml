@@ -106,12 +106,12 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/exitButton"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
                     android:contentDescription="Menu"
-                    app:srcCompat="@drawable/hamburguesanegra" />
+                    app:srcCompat="@drawable/exit" />
 
                 <ImageView
                     android:id="@+id/homeButton"

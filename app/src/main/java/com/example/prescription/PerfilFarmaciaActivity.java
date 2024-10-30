@@ -3,6 +3,7 @@ package com.example.prescription;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -57,6 +58,29 @@ public class PerfilFarmaciaActivity extends AppCompatActivity {
         domicilio.setText(domicilio_parametro);
         colonia.setText(colonia_parametro);
         ciudad.setText(ciudad_parametro);
+
+        DB db = new DB(getApplicationContext(), null, null, 1);
+        String userName = informacion.get(9);
+
+        // Buttons
+        ImageView exitButton = findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilFarmaciaActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
+//        ImageView homeButton = findViewById(R.id.homeButton);
+//        homeButton.setOnClickListener(v -> {
+//            Intent intent = new Intent(PerfilFarmaciaActivity.this, HomeDoctorActivity.class);
+//            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
+//            startActivity(intent);
+//        });
+
+        ImageView perfilButton = findViewById(R.id.perfilButton);
+        perfilButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilFarmaciaActivity.this, PerfilFarmaciaActivity.class);
+            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosFarmacia(userName));
+            startActivity(intent);
+        });
 
     }
 }
