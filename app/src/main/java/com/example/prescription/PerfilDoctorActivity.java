@@ -98,7 +98,7 @@ public class PerfilDoctorActivity extends AppCompatActivity {
 
         Button editButton = findViewById(R.id.buttonEdit);
         editButton.setOnClickListener(v->{
-            edit(telefono,domicilio,colonia,ciudad,editButton);
+            edit(telefono,domicilio,colonia,ciudad,editButton,userName);
         });
 
 
@@ -124,7 +124,7 @@ public class PerfilDoctorActivity extends AppCompatActivity {
 
     }
 
-    private void edit(EditText telefono, EditText domicilio, EditText colonia, EditText ciudad, Button editButton){
+    private void edit(EditText telefono, EditText domicilio, EditText colonia, EditText ciudad, Button editButton, String userName){
         if (editButton.getText().toString().equals("Editar")){
             editButton.setText("Guardar");
             telefono.setEnabled(true);
@@ -132,12 +132,22 @@ public class PerfilDoctorActivity extends AppCompatActivity {
             colonia.setEnabled(true);
             ciudad.setEnabled(true);
         } else if(editButton.getText().toString().equals("Guardar")){
-            editButton.setText("Editar");
-            telefono.setEnabled(false);
-            domicilio.setEnabled(false);
-            colonia.setEnabled(false);
-            ciudad.setEnabled(false);
-            Toast.makeText(getApplicationContext(),"Editado correctamente", Toast.LENGTH_SHORT).show();
+            DB db = new DB(getApplicationContext(), null, null, 1);
+            String telefonoS = telefono.getText().toString();
+            String domicilioS = domicilio.getText().toString();
+            String coloniaS = colonia.getText().toString();
+            String ciudadS = ciudad.getText().toString();
+
+            if(db.actualizar(2,telefonoS,domicilioS,coloniaS,ciudadS,userName)){
+                editButton.setText("Editar");
+                telefono.setEnabled(false);
+                domicilio.setEnabled(false);
+                colonia.setEnabled(false);
+                ciudad.setEnabled(false);
+                Toast.makeText(getApplicationContext(),"Editado correctamente", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(),"No se pudo editar", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

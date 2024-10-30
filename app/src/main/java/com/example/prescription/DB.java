@@ -72,10 +72,36 @@ public class DB extends SQLiteOpenHelper {
         return mensaje;
     }
 
-//    public String actualizar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String cedula, String nombreUsuario){
-//
-//
-//    }
+    public Boolean actualizar(int mode, String telefono, String domicilio, String ciudad, String colonia, String nombreUsuario){
+        //permisos de escritura a la base
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contenedor = new ContentValues();
+        int rowsAffected;
+
+        if(mode == 1){
+            contenedor.put("telefono", telefono);
+            contenedor.put("domicilio", domicilio);
+            contenedor.put("ciudad", ciudad);
+            contenedor.put("colonia", colonia);
+            rowsAffected = database.update("datos_pacientes", contenedor, "nombreUsuario = ?", new String[]{nombreUsuario});
+
+        } else if (mode == 2) {
+            contenedor.put("telefono", telefono);
+            contenedor.put("domicilio", domicilio);
+            contenedor.put("ciudad", ciudad);
+            contenedor.put("colonia", colonia);
+            rowsAffected = database.update("datos_doctores", contenedor, "nombreUsuario = ?", new String[]{nombreUsuario});
+        } else {
+            return false;
+        }
+
+        if (rowsAffected > 0) {
+            return true;
+        } else {
+            return false;
+
+        }
+    }
 
     //metodo guardar(paciente) registro
     public String guardar(String nombre, String apellido, String telefono, String nss, String curp, String domicilio, String ciudad, String colonia, String nombreUsuario, String contrasena){
