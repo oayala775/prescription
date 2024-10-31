@@ -33,6 +33,14 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO datos_pacientes (nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena, rol)" +
                 "VALUES ('paciente', 'paciente', '5551234567', '1234567890', 'JUAP', 'Guadalajara', 'Guadalajara', 'Centro', 'paciente', '12345', 'paciente')");
 
+        // Agregar un doctor predefinido
+        db.execSQL("INSERT INTO datos_doctores (nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, cedula, nombreUsuario, contrasena, rol)" +
+                "VALUES ('doctor', 'ramirez', '3325416183', '123456789', 'DOCTRLP', 'Guadalajara', 'Guadalajara', 'Centro', '111111', 'doctor', '12345', 'doctor')");
+
+        // Agregar una farmacia predefinida
+        db.execSQL("INSERT INTO datos_farmacia(nombre, telefono, domicilio, ciudad, colonia, nombreUsuario, contrasena, rol)" +
+            "VALUES ('Similares','3325418183','Guadalajara','Guadalajara','Centro','farmacia','12345','farmacia')");
+
         db.execSQL("INSERT INTO recetas (nombre, edad, estatura, peso, diagnostico, tratamiento, id_paciente) VALUES ('Receta Inicial', '30', '175', '70', 'Diagnóstico de prueba', 'Tratamiento de prueba', 1)");
 
     }

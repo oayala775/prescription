@@ -97,7 +97,7 @@ public class PerfilUserActivity extends AppCompatActivity {
         });
         ImageView homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(PerfilUserActivity.this, HomeDoctorActivity.class);
+            Intent intent = new Intent(PerfilUserActivity.this, HomeUserActivity.class);
             intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
             startActivity(intent);
         });

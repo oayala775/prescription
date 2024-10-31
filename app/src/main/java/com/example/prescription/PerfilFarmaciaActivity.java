@@ -2,6 +2,7 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -49,7 +50,7 @@ public class PerfilFarmaciaActivity extends AppCompatActivity {
         ciudad.setText(ciudad_parametro);
 
         DB db = new DB(getApplicationContext(), null, null, 1);
-        String userName = informacion.get(9);
+        String userName = informacion.get(6);
 
         nombre.setEnabled(false);
         telefono.setEnabled(false);
@@ -79,7 +80,8 @@ public class PerfilFarmaciaActivity extends AppCompatActivity {
         ImageView perfilButton = findViewById(R.id.perfilButton);
         perfilButton.setOnClickListener(v -> {
             Intent intent = new Intent(PerfilFarmaciaActivity.this, PerfilFarmaciaActivity.class);
-            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosFarmacia(userName));
+            intent.putStringArrayListExtra("datos_farmacia", db.obtenerDatosFarmacia(userName));
+            Log.d("Usuario",userName);
             startActivity(intent);
         });
 

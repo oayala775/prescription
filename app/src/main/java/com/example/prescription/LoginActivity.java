@@ -2,6 +2,7 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -55,6 +56,7 @@ public class LoginActivity extends AppCompatActivity{
                     } else if(tuple.get(1).equals("farmacia")){
                         Intent intent = new Intent(LoginActivity.this, PerfilFarmaciaActivity.class);
                         intent.putStringArrayListExtra("datos_farmacia", db.obtenerDatosFarmacia(userString));
+                        Log.d("datosFarmacia",""+db.obtenerDatosFarmacia(userString));
                         startActivity(intent);
                     }
                 } else {
