@@ -84,7 +84,7 @@ public class PerfilDoctorActivity extends AppCompatActivity {
         anio.setEnabled(false);
 
         DB db = new DB(getApplicationContext(), null, null, 1);
-        String userName = informacion.get(9);
+        String userName = informacion.get(10);
 
         Button editButton = findViewById(R.id.buttonEdit);
         editButton.setOnClickListener(v->{
