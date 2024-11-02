@@ -72,9 +72,6 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Nombre de usuario no disponible", Toast.LENGTH_SHORT).show();
                         nombreUsuario_p.setText("");
                     }
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignUpUsuarioActivity.this, LoginActivity.class);
-                    startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Las contraseñas NO coinciden", Toast.LENGTH_SHORT).show();
                     contrasena_p.setText("");
