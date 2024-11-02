@@ -70,12 +70,12 @@ public class PerfilFarmaciaActivity extends AppCompatActivity {
             Intent intent = new Intent(PerfilFarmaciaActivity.this, LoginActivity.class);
             startActivity(intent);
         });
-//        ImageView homeButton = findViewById(R.id.homeButton);
-//        homeButton.setOnClickListener(v -> {
-//            Intent intent = new Intent(PerfilFarmaciaActivity.this, HomeDoctorActivity.class);
-//            intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userName));
-//            startActivity(intent);
-//        });
+        ImageView homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilFarmaciaActivity.this, HomeFarmaciaActivity.class);
+            intent.putStringArrayListExtra("datos_farmacia", db.obtenerDatosFarmacia(userName));
+            startActivity(intent);
+        });
 
         ImageView perfilButton = findViewById(R.id.perfilButton);
         perfilButton.setOnClickListener(v -> {
