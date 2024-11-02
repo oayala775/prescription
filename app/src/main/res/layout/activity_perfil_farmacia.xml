@@ -86,15 +86,6 @@
                 app:layout_constraintVertical_bias="0.495">
 
                 <TextView
-                    android:id="@+id/farmacia_codigo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Codigo"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-
-                <TextView
                     android:id="@+id/farmacia_nombre_texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -213,12 +204,22 @@
                     android:paddingStart="15dp"
                     tools:ignore="RtlSymmetry" />
 
+                <Button
+                    android:id="@+id/buttonEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20sp"
+                    android:backgroundTint="@color/white"
+                    android:text="Editar"
+                    android:textColor="@color/blue_card"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
         </ScrollView>
 
     </LinearLayout>
-
     <!-- Content Area -->
     <LinearLayout
         android:id="@+id/contentArea"
@@ -249,11 +250,11 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/exitButton"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/hamburguesanegra" />
+                    app:srcCompat="@drawable/exit" />
 
                 <ImageView
                     android:id="@+id/homeButton"
@@ -264,7 +265,7 @@
                     app:srcCompat="@drawable/home" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/perfilButton"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_weight="1"
@@ -272,6 +273,7 @@
                     app:srcCompat="@drawable/usuario" />
 
             </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

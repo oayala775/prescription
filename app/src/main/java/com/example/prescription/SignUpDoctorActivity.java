@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpDoctorActivity extends AppCompatActivity {
 
-    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, cedula_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
+    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, cedula_p, dia_p, mes_p, anio_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
     public Button guardar;
     String[] cedulasValidas = {"111111", "222222", "333333"};
     boolean contrasenaValida = false;
@@ -30,7 +30,6 @@ public class SignUpDoctorActivity extends AppCompatActivity {
         telefono_p = (EditText) findViewById(R.id.doctor_telefono);
         nss_p = (EditText) findViewById(R.id.doctor_nss);
         curp_p = (EditText) findViewById(R.id.doctor_curp);
-        //fecha_nacimiento = findViewById(R.id.doctor_fechaNacimiento);
         domicilio_p = (EditText) findViewById(R.id.doctor_domicilio);
         colonia_p = (EditText) findViewById(R.id.doctor_colonia);
         ciudad_p = (EditText) findViewById(R.id.doctor_ciudad);
@@ -39,6 +38,9 @@ public class SignUpDoctorActivity extends AppCompatActivity {
         contrasena_p = (EditText) findViewById(R.id.doctor_password);
         confirmarContrasena_p = (EditText) findViewById(R.id.doctor_confirm_password);
         guardar = (Button) findViewById(R.id.doctor_guardar);
+        dia_p = (EditText) findViewById(R.id.doctor_day);
+        mes_p = (EditText) findViewById(R.id.doctor_month);
+        anio_p = (EditText) findViewById(R.id.doctor_year);
 
         guardar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,6 +58,9 @@ public class SignUpDoctorActivity extends AppCompatActivity {
                 String nombreUsuario = nombreUsuario_p.getText().toString();
                 String contrasena = contrasena_p.getText().toString();
                 String confirmarContrasena = confirmarContrasena_p.getText().toString();
+                String dia = dia_p.getText().toString();
+                String mes = mes_p.getText().toString();
+                String anio = anio_p.getText().toString();
 
                 //validar contraseña y cedula
                 contrasenaValida = contrasena.equals(confirmarContrasena);
@@ -71,7 +76,7 @@ public class SignUpDoctorActivity extends AppCompatActivity {
                 if(contrasenaValida && cedulaValida){
                     DB db = new DB(getApplicationContext(), null, null, 1);
                     if(db.validarUsuario(nombreUsuario)){
-                        String mensaje = db.guardar(nombre,apellido,telefono, nss, curp, domicilio, ciudad, colonia, cedula, nombreUsuario, contrasena);
+                        String mensaje = db.guardar(nombre,apellido,telefono, nss, curp, domicilio, ciudad, colonia, cedula, nombreUsuario, contrasena, dia, mes, anio);
                         Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignUpDoctorActivity.this, LoginActivity.class);
                         startActivity(intent);

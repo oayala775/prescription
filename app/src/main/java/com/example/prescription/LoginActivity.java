@@ -2,6 +2,7 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,8 +14,7 @@ import java.util.ArrayList;
 
 
 public class LoginActivity extends AppCompatActivity{
-    public Button registerButton;
-    public Button logInButton;
+    public Button registerButton, logInButton, videoButton;
 
     public EditText user, password;
     public String userString, passwordString;
@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity{
 
         logInButton = findViewById(R.id.buttonLogIn);
         registerButton = findViewById(R.id.buttonRegister);
+        videoButton = findViewById(R.id.buttonVideo);
 
         // user, password
         user = findViewById(R.id.user);
@@ -45,13 +46,17 @@ public class LoginActivity extends AppCompatActivity{
                 tuple = db.contrasenaExistente(userString);
                 if(passwordString.equals(tuple.get(0))){
                     if(tuple.get(1).equals("doctor")){
-                        Intent intent = new Intent(LoginActivity.this, PerfilDoctorActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeDoctorActivity.class);
+                        intent.putStringArrayListExtra("datos_doctor", db.obtenerDatosDoctor(userString));
                         startActivity(intent);
                     } else if(tuple.get(1).equals("paciente")){
-                        Intent intent = new Intent(LoginActivity.this, PerfilUserActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeUserActivity.class);
+                        intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userString));
                         startActivity(intent);
                     } else if(tuple.get(1).equals("farmacia")){
-                        Intent intent = new Intent(LoginActivity.this, PerfilFarmaciaActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeFarmaciaActivity.class);
+                        intent.putStringArrayListExtra("datos_farmacia", db.obtenerDatosFarmacia(userString));
+                        Log.d("datosFarmacia",""+db.obtenerDatosFarmacia(userString));
                         startActivity(intent);
                     }
                 } else {
@@ -67,6 +72,10 @@ public class LoginActivity extends AppCompatActivity{
         });
         registerButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
+        videoButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, VideoActivity.class);
             startActivity(intent);
         });
     }

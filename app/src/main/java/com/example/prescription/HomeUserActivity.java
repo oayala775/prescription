@@ -2,15 +2,12 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
-import android.view.View;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,9 +22,11 @@ public class HomeUserActivity extends AppCompatActivity {
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ImageView PerfilButton;
+    private String userName;
 
 
     private List<Receta> inventarioRecetas = new ArrayList<>();
+    private ArrayList<String> informacion;
 
 
     @Override
@@ -36,28 +35,24 @@ public class HomeUserActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_usuario);
 
+        //Log.d("HomeUserActivity", "OnCreate Creado: ");
+
+        Intent intentInformacion = getIntent();
+        informacion = intentInformacion.getStringArrayListExtra("datos_paciente");
+
+        userName = informacion.get(9);
+
+        Log.d("HomeUserActivity", "informacion: " + informacion);
+        //nombre, edad, estatura, peso, diagnostico, tratamiento, idPaciente
+
+
         //Se agregan recetas de prueba
-        this.inventarioRecetas.add(new Receta("27-07-2024","Pruebakokokokokokokokokokokokokokokokokokokokokokokokokokokokoklpllplplplplplplplplplplplpplpllplplplplplplplp"));
-        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("28-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("29-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("30-07-2024","Prueba"));
-        this.inventarioRecetas.add(new Receta("31-07-2024","Prueba"));
+        //Receta receta = new Receta(this, userName);
+        //inventarioRecetas.add(receta);
+
+        DB db = new DB(getApplicationContext(), null, null, 1);
+        this.inventarioRecetas = new ArrayList<>(db.obtenerRecetasPaciente("1"));
+
 
 
 
@@ -70,12 +65,24 @@ public class HomeUserActivity extends AppCompatActivity {
 
 
         // Buttons
-        PerfilButton = findViewById(R.id.perfilButton);
-        PerfilButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
+        ImageView exitButton = findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeUserActivity.this, LoginActivity.class);
+            startActivity(intent);
+        });
+        ImageView homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
+            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
             startActivity(intent);
         });
 
+        ImageView perfilButton = findViewById(R.id.perfilButton);
+        perfilButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeUserActivity.this, PerfilUserActivity.class);
+            intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(userName));
+            startActivity(intent);
+        });
 
     }
 

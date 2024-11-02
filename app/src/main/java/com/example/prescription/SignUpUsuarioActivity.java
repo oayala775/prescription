@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class SignUpUsuarioActivity extends AppCompatActivity {
-    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
+    public EditText nombre_p, apellido_p, telefono_p, nss_p, curp_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p, dia_p, mes_p, anio_p;
     public Button guardar;
     boolean contrasenaValida = false;
 
@@ -28,7 +28,6 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
         telefono_p = (EditText) findViewById(R.id.paciente_telefono);
         nss_p = (EditText) findViewById(R.id.paciente_nss);
         curp_p = (EditText) findViewById(R.id.paciente_curp);
-        //fecha_nacimiento = findViewById(R.id.paciente_fechaNacimiento);
         domicilio_p = (EditText) findViewById(R.id.paciente_domicilio);
         colonia_p = (EditText) findViewById(R.id.paciente_colonia);
         ciudad_p = (EditText) findViewById(R.id.paciente_ciudad);
@@ -36,6 +35,9 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
         contrasena_p = (EditText) findViewById(R.id.paciente_password);
         confirmarContrasena_p = (EditText) findViewById(R.id.paciente_confirm_password);
         guardar = (Button) findViewById(R.id.paciente_guardar);
+        dia_p = (EditText) findViewById(R.id.paciente_day);
+        mes_p = (EditText) findViewById(R.id.paciente_month);
+        anio_p = (EditText) findViewById(R.id.paciente_year);
 
         guardar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -52,15 +54,17 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
                 String nombreUsuario = nombreUsuario_p.getText().toString();
                 String contrasena = contrasena_p.getText().toString();
                 String confirmarContrasena = confirmarContrasena_p.getText().toString();
+                String dia = dia_p.getText().toString();
+                String mes = mes_p.getText().toString();
+                String anio = anio_p.getText().toString();
 
                 //validar contraseña y cedula
                 contrasenaValida = contrasena.equals(confirmarContrasena);
 
                 if (contrasenaValida) {
                     DB db = new DB(getApplicationContext(), null, null, 1);
-<<<<<<< HEAD
                     if(db.validarUsuario(nombreUsuario)){
-                        String mensaje = db.guardar(nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena);
+                        String mensaje = db.guardar(nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena, dia, mes, anio);
                         Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignUpUsuarioActivity.this, LoginActivity.class);
                         startActivity(intent);
@@ -68,12 +72,9 @@ public class SignUpUsuarioActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Nombre de usuario no disponible", Toast.LENGTH_SHORT).show();
                         nombreUsuario_p.setText("");
                     }
-=======
-                    String mensaje = db.guardar(nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena);
                     Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpUsuarioActivity.this, LoginActivity.class);
                     startActivity(intent);
->>>>>>> 481f7e1b41e3444308041fc88b475d0ac06b85fc
                 } else {
                     Toast.makeText(getApplicationContext(), "Las contraseñas NO coinciden", Toast.LENGTH_SHORT).show();
                     contrasena_p.setText("");
