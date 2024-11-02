@@ -89,21 +89,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingTop="20dp">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¿No tienes cuenta?" />
+                android:orientation="vertical"
+                android:paddingTop="10dp">
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No tienes cuenta?" />
 
             <Button
                 android:id="@+id/buttonRegister"
                 style="@style/link_button"
                 android:text="Regístrate" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No sabes como registrarte?" />
+
+            <Button
+                android:id="@+id/buttonVideo"
+                style="@style/link_button"
+                android:text="Tutorial registro" />
 
         </LinearLayout>
 

@@ -14,8 +14,7 @@ import java.util.ArrayList;
 
 
 public class LoginActivity extends AppCompatActivity{
-    public Button registerButton;
-    public Button logInButton;
+    public Button registerButton, logInButton, videoButton;
 
     public EditText user, password;
     public String userString, passwordString;
@@ -30,6 +29,7 @@ public class LoginActivity extends AppCompatActivity{
 
         logInButton = findViewById(R.id.buttonLogIn);
         registerButton = findViewById(R.id.buttonRegister);
+        videoButton = findViewById(R.id.buttonVideo);
 
         // user, password
         user = findViewById(R.id.user);
@@ -72,6 +72,10 @@ public class LoginActivity extends AppCompatActivity{
         });
         registerButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
+        videoButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, VideoActivity.class);
             startActivity(intent);
         });
     }

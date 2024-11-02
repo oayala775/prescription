@@ -63,6 +63,9 @@
         <!-- Queremos que carge la descripcion de la receta del usuario -->
         <activity android:name=".CreateRecipeActivity" />
 
+        <!--Video tutorial registro -->
+        <activity android:name=".VideoActivity" />
+
     </application>
 
 </manifest>
