@@ -19,7 +19,7 @@ public class HomeFarmaciaActivity extends AppCompatActivity {
 
     private ImageView search;
     private EditText searchPill;
-    private String searchText;
+    private String searchText; //User paciente
     private ArrayList<String> informacion;
     private String userName;
 
@@ -46,9 +46,9 @@ public class HomeFarmaciaActivity extends AppCompatActivity {
                 ArrayList<String> info = db.obtenerDatosPaciente(searchText);
                 if(!info.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Usuario " + searchText + " encontrado", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(HomeFarmaciaActivity.this, PerfilFarmaciaActivity.class);
+                    Intent intent = new Intent(HomeFarmaciaActivity.this, RecipesPatientFromFarmacia.class);
+                    intent.putStringArrayListExtra("datos_paciente", db.obtenerDatosPaciente(searchText));
                     intent.putStringArrayListExtra("datos_farmacia", db.obtenerDatosFarmacia(userName));
-
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();

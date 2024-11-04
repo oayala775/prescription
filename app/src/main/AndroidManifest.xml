@@ -66,6 +66,9 @@
         <!--Video tutorial registro -->
         <activity android:name=".VideoActivity" />
 
+        <!--Queremos que carge las recetas del paciente desde el perfil de la farmacia -->
+        <activity android:name=".RecipesPatientFromFarmacia" />
+
     </application>
 
 </manifest>
