@@ -2,6 +2,7 @@ package com.example.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,6 +32,7 @@ public class PerfilUserActivity extends AppCompatActivity {
         //Obtenemos informacion del intent
         Intent intentInformacion = getIntent();
         informacion = intentInformacion.getStringArrayListExtra("datos_paciente");
+        //Log.d("Informacion usuario",""+informacion);
 
         String nombre_parametro = informacion.get(1);
         String apellido_parametro = informacion.get(2);
