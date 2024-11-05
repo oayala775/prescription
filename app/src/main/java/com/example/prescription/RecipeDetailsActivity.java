@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -47,10 +48,6 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         ArrayList<String> detailsRecipe = intent.getStringArrayListExtra("description_recipe");
 
         fullName.setText(detailsRecipe.get(0));
-        //id.setText(detailsRecipe.get(6));
-        //day.setText(detailsRecipe.get(2));
-        //month.setText(detailsRecipe.get(3));
-        //year.setText(detailsRecipe.get(4));
         age.setText(detailsRecipe.get(1));
         height.setText(detailsRecipe.get(2));
         weight.setText(detailsRecipe.get(3));
@@ -63,5 +60,16 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         else{
             status.setVisibility(View.GONE);
         }
+
+        DB db = new DB(getApplicationContext(), null, null, 1);
+
+        ImageView exitButton = findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(v -> {
+            Intent intent2 = new Intent(RecipeDetailsActivity.this, LoginActivity.class);
+            startActivity(intent2);
+        });
+
     }
+
+
 }

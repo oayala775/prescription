@@ -212,17 +212,6 @@
                             android:paddingStart="15dp" />
 
 
-                        <TextView
-                            android:id="@+id/foto_perfil"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="10dp"
-                            android:gravity="center"
-                            android:text="Subir foto de perfil"
-                            android:textColor="#FFFFFF"
-                            android:textSize="20dp" />
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

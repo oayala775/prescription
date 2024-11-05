@@ -159,7 +159,6 @@ public class DB extends SQLiteOpenHelper {
 
         contenedor.put("nombre", nombre);
         contenedor.put("telefono", telefono);
-        //contenedor.put("fechaNacimiento", fechaNacimiento);
         contenedor.put("domicilio", domicilio);
         contenedor.put("ciudad", ciudad);
         contenedor.put("colonia",colonia);

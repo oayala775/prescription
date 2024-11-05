@@ -11,7 +11,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpFarmaciaActivity extends AppCompatActivity {
-    public EditText nombre_p, telefono_p, fecha_nacimiento_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
+    public EditText nombre_p, telefono_p, domicilio_p, ciudad_p, colonia_p, nombreUsuario_p, contrasena_p, confirmarContrasena_p;
     public Button guardar;
     boolean contrasenaValida = false;
 
@@ -23,7 +23,6 @@ public class SignUpFarmaciaActivity extends AppCompatActivity {
 
         nombre_p = (EditText) findViewById(R.id.farmacia_nombre);
         telefono_p = (EditText) findViewById(R.id.farmacia_telefono);
-        //fecha_nacimiento = findViewById(R.id.farmacia_fechaNacimiento);
         domicilio_p = (EditText) findViewById(R.id.farmacia_domicilio);
         colonia_p = (EditText) findViewById(R.id.farmacia_colonia);
         ciudad_p = (EditText) findViewById(R.id.farmacia_ciudad);
@@ -59,10 +58,6 @@ public class SignUpFarmaciaActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Nombre de usuario no disponible", Toast.LENGTH_SHORT).show();
                         nombreUsuario_p.setText("");
                     }
-                    String mensaje = db.guardar(nombre, telefono, domicilio, ciudad, colonia, nombreUsuario, contrasena);
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignUpFarmaciaActivity.this, LoginActivity.class);
-                    startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Las contraseñas NO coinciden", Toast.LENGTH_SHORT).show();
                     contrasena_p.setText("");
