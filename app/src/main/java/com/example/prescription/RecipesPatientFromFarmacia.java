@@ -47,16 +47,17 @@ public class RecipesPatientFromFarmacia extends AppCompatActivity {
         code = findViewById(R.id.codigo);
 
         userName.setText(informacion.get(9));
-        code.setText(informacion.get(0));
 
         // Databases
         DB db = new DB(getApplicationContext(), null, null, 1);
-        inventarioRecetas = new ArrayList<>(db.obtenerRecetasPaciente(informacion.get(0)));
+        inventarioRecetas = new ArrayList<>(
+                db.obtenerRecetaPaciente(informacion.get(0))
+        );
 
         // Adapter
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myAdapter = new ItemRecetaAdapter(new ArrayList<>(inventarioRecetas));
+        myAdapter = new ItemRecetaAdapterFarmacia(new ArrayList<>(inventarioRecetas));
         recyclerView.setAdapter(myAdapter);
 
 

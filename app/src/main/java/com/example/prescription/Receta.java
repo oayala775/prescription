@@ -19,10 +19,11 @@ public class Receta {
     private String stature;
     private String weight;
     private String diagnostic;
-
+    private String medications;
     private String treatment;
     private String date;
     private boolean status = false; // True -> Active, False -> Expired
+    private int id;
     private ArrayList<String> informacion;
 
 
@@ -46,6 +47,29 @@ public class Receta {
             String peso,
             String diagnostico,
             String tratamiento,
+            String medications,
+            String idPaciente,
+            String id
+    ){
+        this.name = nombre;
+        this.age = edad;
+        this.stature = estatura;
+        this.weight = peso;
+        this.diagnostic = diagnostico;
+        this.treatment = tratamiento;
+        this.idPatient = Integer.parseInt(idPaciente);
+        this.medications = medications;
+        this.id = Integer.parseInt(id);
+    }
+
+    public Receta(
+            String nombre,
+            String edad,
+            String estatura,
+            String peso,
+            String diagnostico,
+            String tratamiento,
+            String medications,
             String idPaciente
     ){
         this.name = nombre;
@@ -55,12 +79,13 @@ public class Receta {
         this.diagnostic = diagnostico;
         this.treatment = tratamiento;
         this.idPatient = Integer.parseInt(idPaciente);
+        this.medications = medications;
     }
-
 
     //Setters
     public void setName(String n){ this.name = n;}
     public void setIdPatient(Integer id){ this.idPatient = id;}
+    public void setId(Integer id){ this.id = id;}
     public void setAge(String age){ this.age = age; }
     public void setGender(String g) { this.gender = g; }
     public void setStature(String s){ this.stature = s; }
@@ -72,12 +97,15 @@ public class Receta {
         this.diagnostic = diag;
     }
     public void setTreatment(String T) { this.treatment = T; }
+    public void setMedications(String M) { this.medications = M; }
+
     public void setStatus(boolean S) { this.status = S; }
 
 
     //Getters
     public String getName() { return this.name; }
     public Integer getIdPatient(){ return this.idPatient; }
+    public Integer getId(){ return this.id; }
     public String getAge(){ return this.age; }
     public String getGender(){ return this.gender; }
     public String getStature(){ return this.stature; }
@@ -88,7 +116,9 @@ public class Receta {
     public String getDiagnostic(){
         return this.diagnostic;
     }
+
     public String getTreatment(){ return this.treatment; }
+    public String getMedications(){ return this.medications; }
     public boolean getStatus(){ return this.status; }
 
 

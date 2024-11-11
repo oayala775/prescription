@@ -304,6 +304,32 @@
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             android:maxLines="10" />
+                        <TextView
+                            android:id="@+id/text_medications"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Medicamentos"
+                            android:textSize="15sp"
+                            android:textStyle="italic" />
+
+                        <EditText
+                            android:id="@+id/user_med"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/item_lista"
+                            android:ems="10"
+                            android:hint="Medicamentos"
+                            android:gravity="start"
+                            android:inputType="textMultiLine"
+                            android:minHeight="150dp"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:maxLines="10" />
 
                         <Button
                             android:id="@+id/buttonSendRecipe"

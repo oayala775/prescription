@@ -69,6 +69,11 @@
         <!--Queremos que carge las recetas del paciente desde el perfil de la farmacia -->
         <activity android:name=".RecipesPatientFromFarmacia" />
 
+        <!--Queremos que carge las recetas del paciente desde el perfil de la farmacia -->
+        <activity android:name=".RecipeDetailsActivityFarmacia" />
+
+
+
     </application>
 
 </manifest>

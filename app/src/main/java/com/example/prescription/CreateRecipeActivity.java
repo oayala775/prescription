@@ -23,6 +23,7 @@ public class CreateRecipeActivity extends AppCompatActivity {
     private EditText weight;
     private EditText diagnostic;
     private EditText treatment;
+    private EditText medications;
     private ArrayList<String> informacion;
     private String userName;
     private Integer idPaciente;
@@ -51,6 +52,7 @@ public class CreateRecipeActivity extends AppCompatActivity {
         diagnostic = findViewById(R.id.user_diagnostic);
         treatment = findViewById(R.id.user_treatment);
         button = findViewById(R.id.buttonSendRecipe);
+        medications = findViewById(R.id.user_med);
 
         name.setText(informacion.get(1) + " " + informacion.get(2));
 
@@ -60,13 +62,15 @@ public class CreateRecipeActivity extends AppCompatActivity {
             String weightString;
             String diagnosticString;
             String treatmentString;
+            String medicationsString;
 
             ageString = age.getText().toString();
             heightString = height.getText().toString();
             weightString = weight.getText().toString();
             diagnosticString = diagnostic.getText().toString();
             treatmentString = treatment.getText().toString();
-            String mensaje = db.guardar(informacion.get(1), idPaciente, ageString,heightString,weightString,diagnosticString,treatmentString);
+            medicationsString = medications.getText().toString();
+            String mensaje = db.guardar(informacion.get(1), idPaciente, ageString,heightString,weightString,diagnosticString,treatmentString,medicationsString);
 
             if (mensaje.equals("Receta correctamente creada")){
                 Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();

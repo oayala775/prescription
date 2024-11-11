@@ -26,25 +26,23 @@ public class DB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE datos_doctores(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, cedula TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT, dia TEXT, mes TEXT, anio Text)");
         db.execSQL("CREATE TABLE datos_pacientes(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, apellido TEXT, telefono TEXT, nss TEXT, curp TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT, dia TEXT, mes TEXT, anio Text)");
-        db.execSQL("CREATE TABLE datos_farmacia(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, telefono TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
-        db.execSQL("CREATE TABLE recetas(id_receta INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, estatura TEXT, peso TEXT, diagnostico TEXT, tratamiento TEXT, id_paciente INTEGER, FOREIGN KEY (id_paciente) REFERENCES datos_pacientes(id))");
+        db.execSQL("CREATE TABLE datos_farmacia(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, telefono TEXT, domicilio TEXT, ciudad TEXT, colonia TEXT, nombreUsuario TEXT, contrasena TEXT, rol TEXT)");
+        db.execSQL("CREATE TABLE recetas(id_receta INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, edad TEXT, estatura TEXT, peso TEXT, diagnostico TEXT, tratamiento TEXT, medicamentos TEXT, id_paciente INTEGER, FOREIGN KEY (id_paciente) REFERENCES datos_pacientes(id))");
 
         // Agregar un paciente predefinido
-        db.execSQL("INSERT INTO datos_pacientes (nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena, rol, dia, mes, anio)" +
+        db.execSQL("INSERT INTO datos_pacientes (nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, nombreUsuario, contrasena, rol, dia, mes, anio) " +
                 "VALUES ('paciente', 'paciente', '5551234567', '1234567890', 'JUAP', 'Guadalajara', 'Guadalajara', 'Centro', 'paciente', '12345', 'paciente','18','01','2003')");
+
+        db.execSQL("INSERT INTO recetas (nombre, edad, estatura, peso, diagnostico, tratamiento, medicamentos, id_paciente) VALUES ('Receta Inicial', '30', '175', '70', 'Diagnóstico de prueba', 'Tratamiento de prueba', 'Omeprazol 500mg 5 cajas', 1)");
+        db.execSQL("INSERT INTO recetas (nombre, edad, estatura, peso, diagnostico, tratamiento, medicamentos, id_paciente) VALUES ('Receta Inicial', '30', '175', '70', 'Diagnóstico de prueba', 'Tratamiento de prueba', 'Omeprazol 500mg 5 cajas', 1)");
 
         // Agregar un doctor predefinido
         db.execSQL("INSERT INTO datos_doctores (nombre, apellido, telefono, nss, curp, domicilio, ciudad, colonia, cedula, nombreUsuario, contrasena, rol, dia, mes, anio)" +
-                "VALUES ('doctor', 'ramirez', '3325416183', '123456789', 'DOCTRLP', 'Guadalajara', 'Guadalajara', 'Centro', '111111', 'doctor', '12345', 'doctor','01','10','2003')");
+                " VALUES ('doctor', 'ramirez', '3325416183', '123456789', 'DOCTRLP', 'Guadalajara', 'Guadalajara', 'Centro', '111111', 'doctor', '12345', 'doctor','01','10','2003')");
 
         // Agregar una farmacia predefinida
         db.execSQL("INSERT INTO datos_farmacia(nombre, telefono, domicilio, ciudad, colonia, nombreUsuario, contrasena, rol)" +
-            "VALUES ('Similares','3325418183','Guadalajara','Guadalajara','Centro','farmacia','12345','farmacia')");
-
-        db.execSQL("INSERT INTO recetas (nombre, edad, estatura, peso, diagnostico, tratamiento, id_paciente) VALUES ('Receta Inicial', '30', '175', '70', 'Diagnóstico de prueba', 'Tratamiento de prueba', 1)");
-        db.execSQL("INSERT INTO recetas (nombre, edad, estatura, peso, diagnostico, tratamiento, id_paciente) VALUES ('Receta Inicial', '30', '175', '70', 'Diagnóstico de prueba', 'Tratamiento de prueba', 1)");
-
-
+            " VALUES ('Similares','3325418183','Guadalajara','Guadalajara','Centro','farmacia','12345','farmacia')");
     }
 
     @Override
@@ -106,6 +104,25 @@ public class DB extends SQLiteOpenHelper {
         } else {
             return false;
         }
+
+        if (rowsAffected > 0) {
+            return true;
+        } else {
+            return false;
+
+        }
+    }
+
+    public Boolean actualizar_receta(String medicamentos, String idPaciente, String idReceta){
+        //permisos de escritura a la base
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contenedor = new ContentValues();
+        int rowsAffected;
+
+
+        contenedor.put("medicamentos", medicamentos);
+        rowsAffected = database.update("recetas", contenedor, "id_paciente = ? AND id_receta = ?", new String[]{idPaciente,idReceta});
+        database.close();   // Successful login
 
         if (rowsAffected > 0) {
             return true;
@@ -178,7 +195,7 @@ public class DB extends SQLiteOpenHelper {
     }
 
     // Guardar recetas
-    public String guardar(String nombre, int id_paciente, String edad, String estatura, String peso, String diagnostico, String tratamiento){
+    public String guardar(String nombre, int id_paciente, String edad, String estatura, String peso, String diagnostico, String tratamiento, String medications){
         String mensaje = "";
 
         //permisos de escritura a la base
@@ -194,6 +211,7 @@ public class DB extends SQLiteOpenHelper {
             contenedor.put("peso",peso);
             contenedor.put("diagnostico",diagnostico);
             contenedor.put("tratamiento",tratamiento);
+            contenedor.put("medicamentos",medications);
             contenedor.put("id_paciente",id_paciente);
             //corroborar que se ingreso o no a la base de datos
             try{
@@ -390,9 +408,49 @@ public class DB extends SQLiteOpenHelper {
                     @SuppressLint("Range") String peso = cursor.getString(cursor.getColumnIndex("peso"));
                     @SuppressLint("Range") String diagnostico = cursor.getString(cursor.getColumnIndex("diagnostico"));
                     @SuppressLint("Range") String tratamiento = cursor.getString(cursor.getColumnIndex("tratamiento"));
+                    @SuppressLint("Range") String medicamentos = cursor.getString(cursor.getColumnIndex("medicamentos"));
 
                     // Crea un objeto Receta (asegúrate de tener la clase Receta definida)
-                    Receta receta = new Receta(nombre, edad, estatura, peso, diagnostico, tratamiento, idPaciente);
+                    Receta receta = new Receta(nombre, edad, estatura, peso, diagnostico, tratamiento, medicamentos, idPaciente);
+                    datos.add(receta);
+                } while (cursor.moveToNext());
+            }
+            catch (Exception e){
+                Log.e("DB", "Error al obtener recetas: ", e);
+            }
+            finally {
+                cursor.close();
+            }
+        }
+        database.close();
+        return datos;
+    }
+
+    public ArrayList<Receta> obtenerRecetaPaciente(String idPaciente){
+        ArrayList<Receta> datos = new ArrayList<>();
+
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        String query = "SELECT * FROM recetas WHERE id_paciente = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{idPaciente});
+
+
+
+        if(cursor != null){
+            try{
+                cursor.moveToFirst();
+                do {
+                    @SuppressLint("Range") String idReceta = cursor.getString(cursor.getColumnIndex("id_receta"));
+                    @SuppressLint("Range") String nombre = cursor.getString(cursor.getColumnIndex("nombre"));
+                    @SuppressLint("Range") String edad = cursor.getString(cursor.getColumnIndex("edad"));
+                    @SuppressLint("Range") String estatura = cursor.getString(cursor.getColumnIndex("estatura"));
+                    @SuppressLint("Range") String peso = cursor.getString(cursor.getColumnIndex("peso"));
+                    @SuppressLint("Range") String diagnostico = cursor.getString(cursor.getColumnIndex("diagnostico"));
+                    @SuppressLint("Range") String tratamiento = cursor.getString(cursor.getColumnIndex("tratamiento"));
+                    @SuppressLint("Range") String medicamentos = cursor.getString(cursor.getColumnIndex("medicamentos"));
+
+                    // Crea un objeto Receta (asegúrate de tener la clase Receta definida)
+                    Receta receta = new Receta(nombre, edad, estatura, peso, diagnostico, tratamiento, medicamentos, idPaciente, idReceta);
                     datos.add(receta);
                 } while (cursor.moveToNext());
             }

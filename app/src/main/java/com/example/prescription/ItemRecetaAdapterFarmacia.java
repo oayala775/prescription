@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,10 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.MyViewHolder> {
+public class ItemRecetaAdapterFarmacia extends RecyclerView.Adapter<ItemRecetaAdapterFarmacia.MyViewHolder> {
 
     private List<Receta> data;
 
@@ -34,7 +32,9 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
         }
     }
 
-    public ItemRecetaAdapter(ArrayList<Receta> recetas){data = new ArrayList<>(recetas);}
+    public ItemRecetaAdapterFarmacia(ArrayList<Receta> recetas){
+        data = new ArrayList<>(recetas);
+    }
 
     @NonNull
     @Override
@@ -56,7 +56,7 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
         holder.sig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), RecipeDetailsActivity.class);
+                Intent intent = new Intent(v.getContext(), RecipeDetailsActivityFarmacia.class);
 
                 ArrayList<String> details_recipe = new ArrayList<>();
 
@@ -74,6 +74,9 @@ public class ItemRecetaAdapter extends RecyclerView.Adapter<ItemRecetaAdapter.My
                 details_recipe.add(data.get(position).getDiagnostic());
                 details_recipe.add(data.get(position).getTreatment());
                 details_recipe.add(data.get(position).getMedications());
+                details_recipe.add(data.get(position).getIdPatient().toString());
+                details_recipe.add(data.get(position).getId().toString());
+
 
 
                 intent.putStringArrayListExtra("description_recipe", details_recipe);

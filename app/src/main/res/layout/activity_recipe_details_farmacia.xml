@@ -347,6 +347,18 @@
                             android:textSize="15sp"
                             android:maxLines="10" />
 
+                        <Button
+                            android:layout_marginTop="20sp"
+                            android:id="@+id/buttonEdit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20sp"
+                            android:backgroundTint="@color/blue_card"
+                            android:text="Editar"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
 
                     </LinearLayout>
 
